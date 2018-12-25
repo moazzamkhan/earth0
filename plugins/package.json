@@ -1,0 +1,37 @@
+{
+  "name": "epsilon-plugins",
+  "version": "0.0.1",
+  "main": "./dist/epsilon.plugins.bundle.js",
+  "types": "./dist/index.d.ts",
+  "license": "MIT",
+  "scripts": {
+    "build": "webpack --mode=development"
+  },
+  "devDependencies": {
+    "@types/clone": "^0.1.30",
+    "@types/draft-js": "^0.10.26",
+    "@types/react": "^16.7.17",
+    "@types/react-router-dom": "^4.3.1",
+    "babel-loader": "^8.0.4",
+    "css-loader": "^2.0.1",
+    "epsilon-base": "file:../base",
+    "less": "^3.9.0",
+    "less-loader": "^4.1.0",
+    "react": "^16.6.3",
+    "react-dom": "^16.6.3",
+    "style-loader": "^0.23.1",
+    "ts-loader": "^5.3.1",
+    "typescript": "^3.2.2",
+    "webpack": "^4.27.1",
+    "webpack-cli": "^3.1.2",
+    "webpack-merge": "^4.1.5"
+  },
+  "peerDependencies": {
+    "epsilon-base": "file:../base",
+    "react": "^16.6.3"
+  },
+  "dependencies": {
+    "clone": "^2.1.2",
+    "draft-js": "^0.10.5"
+  }
+}

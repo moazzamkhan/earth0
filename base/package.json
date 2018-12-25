@@ -1,0 +1,16 @@
+{
+  "name": "epsilon-base",
+  "version": "1.0.0",
+  "main": "./dist/epsilon.base.bundle.js",
+  "typings": "index.d.ts",
+  "license": "MIT",
+  "scripts": {
+    "build": "webpack"
+  },
+  "dependencies": {
+    "ts-loader": "^5.3.1",
+    "typescript": "^3.2.2",
+    "webpack": "^4.27.1",
+    "webpack-cli": "^3.1.2"
+  }
+}
