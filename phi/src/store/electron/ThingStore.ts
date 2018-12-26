@@ -11,7 +11,7 @@ const defaultData = {
       name: "User Account",
       type: "user-account",
       value: {
-        name: "No Name",
+        name: "",
         settings: {
           savedAt: "~/.everything/et.json"
         }

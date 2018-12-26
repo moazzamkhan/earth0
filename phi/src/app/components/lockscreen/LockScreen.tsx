@@ -21,7 +21,7 @@ const component = ({ name, onLogin }: Props) => (
       <source src={vid} type="video/mp4" />
     </video>
     <div id="user-info-summary">
-      {name === "NONAME" ? (
+      {!name ? (
         <NameInputComponent onChange={(name: string) => onLogin(name)} />
       ) : (
         <button
@@ -41,6 +41,7 @@ const component = ({ name, onLogin }: Props) => (
 )
 
 const mapStateToProps = (state: AppState) => {
+  console.log(state)
   console.log(ThingUtils.getUserAccount(state))
   return {
     name: (ThingUtils.getUserAccount(state).value as UserAccount).name
