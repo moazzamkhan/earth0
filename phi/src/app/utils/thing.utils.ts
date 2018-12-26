@@ -6,8 +6,6 @@ import * as Notes from "epsilon-plugins/dist/notes"
 import * as Thoughts from "epsilon-plugins/dist/thoughts"
 import * as UserAccount from "../default-plugins/user-account/"
 
-console.log(Notes, Thoughts)
-
 export class ThingUtils {
   static createThingInstance(type: string, name: string, value: any) {
     return Object.assign(
