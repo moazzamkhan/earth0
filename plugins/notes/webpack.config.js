@@ -2,11 +2,11 @@ const path = require("path")
 
 module.exports = {
   entry: {
-    notes: "./notes/index.ts",
-    thoughts: "./thoughts/index.ts"
+    notes: "./src/index.ts"
   },
   output: {
     filename: "[name].js",
+    libraryTarget: 'umd',
     path: path.resolve(__dirname, "./dist")
   },
   target: "web",

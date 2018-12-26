@@ -2,11 +2,9 @@ import uniqid from "uniqid"
 import { Thing } from "epsilon-base"
 import AppState from "../models/AppState"
 
-import * as Notes from "epsilon-plugins/dist/notes"
-import * as Thoughts from "epsilon-plugins/dist/thoughts"
+import * as Notes from "e0-plugins-notes"
+import * as Thoughts from "e0-plugins-thoughts"
 import * as UserAccount from "../default-plugins/user-account/"
-
-console.log(Notes)
 export class ThingUtils {
   static createThingInstance(type: string, name: string, value: any) {
     return Object.assign(

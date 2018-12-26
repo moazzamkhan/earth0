@@ -16,17 +16,15 @@ const component = ({
   itemClicked: any
   types: { type: string; icon: string }[]
   type: string
-}) => {  
+}) => {
   return (
     <div id="side-toolbar" role="toolbar" aria-label="">
       <button
         type="button"
         className="btn app-icon"
-        onClick={(e: SyntheticEvent<HTMLButtonElement>) =>
-          itemClicked(null, null)
-        }
+        onClick={(e: SyntheticEvent<HTMLButtonElement>) => itemClicked(null, null)}
       >
-        &epsilon;
+        <i className="fas fa-globe-americas" />
       </button>
       {types &&
         types.map((t: any) => (
@@ -34,9 +32,7 @@ const component = ({
             className={`btn ${t.type === type ? "selected" : ""}`}
             id={t.type}
             key={t.type}
-            onClick={(e: SyntheticEvent<HTMLButtonElement>) =>
-              itemClicked((e.currentTarget as HTMLButtonElement).id)
-            }
+            onClick={(e: SyntheticEvent<HTMLButtonElement>) => itemClicked((e.currentTarget as HTMLButtonElement).id)}
           >
             <i className={t.icon} />
           </button>
@@ -46,24 +42,19 @@ const component = ({
 
       <button
         className={`btn ${"user-account" === type ? "selected" : ""}`}
-        onClick={(e: SyntheticEvent<HTMLButtonElement>) =>
-          itemClicked("user-account")
-        }
+        onClick={(e: SyntheticEvent<HTMLButtonElement>) => itemClicked("user-account")}
       >
         <i className={UserAccountIcon} />
       </button>
 
-      <button
-        className="btn"
-        onClick={(e: SyntheticEvent<HTMLButtonElement>) => console.log(e)}
-      >
+      <button className="btn" onClick={(e: SyntheticEvent<HTMLButtonElement>) => console.log(e)}>
         <i className="fas fa-arrow-circle-right" />
       </button>
     </div>
   )
 }
 
-const mapStateToProps = (state: AppState) => {  
+const mapStateToProps = (state: AppState) => {
   return {
     types: THING_TYPES,
     type: state.route.thingType
