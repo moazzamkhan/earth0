@@ -16,8 +16,7 @@ if (process.env.PHI_CONTEXT === "browser") {
 
 // load plugins
 
-storePromise.then((storeModule: any) => {
-  console.log(storeModule)
+storePromise.then((storeModule: any) => {  
   const thingStore = new storeModule.ThingStore()
 
   const store = createStore(appStateReducer, thingStore.getData())

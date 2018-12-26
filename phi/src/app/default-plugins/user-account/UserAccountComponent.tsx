@@ -1,9 +1,9 @@
-import React from "react"
-import { Thing } from "epsilon-base"
-import UserAccount from "./UserAccount"
+import { Thing } from "epsilon-base";
+import React from "react";
+import UserAccount from "./UserAccount";
 
 const UserAccountComponent = ({ thing }: { thing: Thing }) => {
-  const personInfo = thing.value as UserAccount
+  const userAccount = thing.value as UserAccount
   return (
     <div id="personInfo">
       <form>
@@ -12,7 +12,7 @@ const UserAccountComponent = ({ thing }: { thing: Thing }) => {
             htmlFor="name"
             className="col-sm-2 col-form-label col-form-label-lg"
           >
-            Name {personInfo.name}
+            Name {userAccount.personalInfo.name}
           </label>
           <div className="col-sm-10">
             <input

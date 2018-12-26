@@ -12,7 +12,7 @@ import LockScreen from "./components/lockscreen/LockScreen";
 // 1. LockScreen - // locked/null
 // 2. SignUpScreen // signup/null
 // 3. EverythingScreen - default - /user-account/user-account/
-const component = ({ thingId }: RouteState) => {
+const component = ({ thingId }: RouteState) => {  
   if (true) {
     return (
       <div id="everything">

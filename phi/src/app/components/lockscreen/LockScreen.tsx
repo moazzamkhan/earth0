@@ -9,28 +9,31 @@ import moment from "moment"
 import { NameInputComponent } from "./NameInputComponet"
 import { ThingUtils } from "../../utils/thing.utils"
 import UserAccount from "../../default-plugins/user-account/UserAccount"
+import { updateThing } from "../things/things.action"
+import clone from "clone"
 
 interface Props {
-  name: string
-  onLogin: (name: string) => void
+  thing: Thing
+  onLogin: (thing: Thing) => void
 }
 
-const component = ({ name, onLogin }: Props) => (
+const component = ({ thing, onLogin }: Props) => (
   <div id="lock-screen">
     <video autoPlay loop>
       <source src={vid} type="video/mp4" />
     </video>
     <div id="user-info-summary">
-      {!name ? (
-        <NameInputComponent onChange={(name: string) => onLogin(name)} />
+      {!(thing.value as UserAccount).personalInfo.name ? (
+        <NameInputComponent
+          onChange={(name: string) => {
+            const t = clone(thing)
+            t.value.personalInfo.name = name
+            onLogin(t)
+          }}
+        />
       ) : (
-        <button
-          id="login-button"
-          type="button"
-          className="btn btn-warning"
-          onClick={e => onLogin(null)}
-        >
-          {name} <i className="fas fa-arrow-right" />
+        <button id="login-button" type="button" className="btn btn-warning" onClick={e => onLogin(null)}>
+          {(thing.value as UserAccount).personalInfo.name} <i className="fas fa-arrow-right" />
         </button>
       )}
 
@@ -41,17 +44,18 @@ const component = ({ name, onLogin }: Props) => (
 )
 
 const mapStateToProps = (state: AppState) => {
-  console.log(state)
-  console.log(ThingUtils.getUserAccount(state))
   return {
-    name: (ThingUtils.getUserAccount(state).value as UserAccount).name
+    thing: ThingUtils.getUserAccount(state)
   }
 }
 
 const mapDispatchToProps = (dispatch: any) => {
   return {
-    onLogin: (name: string) => {
-      console.log(name)
+    onLogin: (thing: Thing) => {
+      if (thing) {
+        dispatch(updateThing(thing))
+      }
+      console.log(thing)
     }
   }
 }

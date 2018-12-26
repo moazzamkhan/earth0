@@ -29,18 +29,14 @@ export class NameInputComponent extends Component<Props, State> {
   render() {
     return (
       <div className="input-group">
-        <input
-          type="text"
-          className="form-control"
-          placeholder="What is your name?"
-          onChange={this.handleChange}
-        />
+        <input type="text" className="form-control" placeholder="What is your name?" onChange={this.handleChange} />
         <div className="input-group-append">
           <button
             value={this.state.value}
             className="btn btn-outline-warning"
             type="button"
             id="button-addon2"
+            onClick={e => this.handleSubmit(e)}
           >
             <i className="fas fa-arrow-right" />
           </button>
