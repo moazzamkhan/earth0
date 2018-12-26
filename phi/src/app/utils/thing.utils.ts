@@ -5,7 +5,6 @@ import AppState from "../models/AppState"
 import * as Notes from "epsilon-plugins/dist/notes"
 import * as Thoughts from "epsilon-plugins/dist/thoughts"
 import * as UserAccount from "../default-plugins/user-account/"
-import UserAccount from "../default-plugins/user-account/UserAccount"
 
 console.log(Notes, Thoughts)
 
