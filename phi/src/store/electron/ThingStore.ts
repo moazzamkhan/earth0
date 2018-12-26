@@ -25,8 +25,7 @@ export class ThingStore {
   private homedir = path.join(os.homedir(), ".everything")
 
   constructor() {
-    const something = mkdirp.sync(this.homedir)
-    console.log(something)
+    mkdirp.sync(this.homedir)
   }
 
   getData(): any {

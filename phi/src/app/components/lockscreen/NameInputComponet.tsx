@@ -38,7 +38,7 @@ export class NameInputComponent extends Component<Props, State> {
             id="button-addon2"
             onClick={e => this.handleSubmit(e)}
           >
-            <i className="fas fa-arrow-right" />
+            ok
           </button>
         </div>
       </div>

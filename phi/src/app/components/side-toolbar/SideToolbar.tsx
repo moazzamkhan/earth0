@@ -16,7 +16,7 @@ const component = ({
   itemClicked: any
   types: { type: string; icon: string }[]
   type: string
-}) => {
+}) => {  
   return (
     <div id="side-toolbar" role="toolbar" aria-label="">
       <button
@@ -63,7 +63,7 @@ const component = ({
   )
 }
 
-const mapStateToProps = (state: AppState) => {
+const mapStateToProps = (state: AppState) => {  
   return {
     types: THING_TYPES,
     type: state.route.thingType

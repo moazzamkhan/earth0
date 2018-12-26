@@ -13,13 +13,15 @@ if (process.env.PHI_CONTEXT === "browser") {
   storePromise = import("./store/electron/ThingStore")
 }
 
-
 // load plugins
 
-storePromise.then((storeModule: any) => {  
+storePromise.then((storeModule: any) => {
   const thingStore = new storeModule.ThingStore()
 
-  const store = createStore(appStateReducer, thingStore.getData())
+  const store = createStore(
+    appStateReducer,
+    Object.assign({}, thingStore.getData(), { route: { thingType: "locked", thingId: null } })
+  )
 
   store.subscribe(() => {
     thingStore.saveData(store.getState())

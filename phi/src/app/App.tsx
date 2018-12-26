@@ -7,13 +7,12 @@ import TitleBar from "./components/titlebar/TitleBar"
 import AppState from "./models/AppState"
 import RouteState from "./models/RouteState"
 import { connect } from "react-redux"
-import LockScreen from "./components/lockscreen/LockScreen";
+import LockScreen from "./components/lockscreen/LockScreen"
 
 // 1. LockScreen - // locked/null
-// 2. SignUpScreen // signup/null
-// 3. EverythingScreen - default - /user-account/user-account/
-const component = ({ thingId }: RouteState) => {  
-  if (true) {
+// 2. EverythingScreen - default - /user-account/user-account/
+const component = ({ thingId, thingType }: RouteState) => {  
+  if (thingType === "locked") {
     return (
       <div id="everything">
         <LockScreen />
