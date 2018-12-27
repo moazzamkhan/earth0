@@ -22,7 +22,7 @@ interface Props {
 
 const component = ({ thing, onLogin, onNameSet }: Props) => (
   <div id="lock-screen">
-    <video autoPlay loop>
+    <video autoPlay loop playsInline muted>
       <source src={vid} type="video/mp4" />
     </video>
     <div id="user-info-summary">
