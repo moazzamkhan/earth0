@@ -5,9 +5,10 @@ import PersonalInfo from "../personal-info/PersonalInfo"
 
 interface Props {
   personalInfo: PersonalInfo
+  onChange: any
 }
 
-const MeComponent = ({ personalInfo }: Props) => {
+const MeComponent = ({ personalInfo, onChange }: Props) => {
   return (
     <div id="me-box">
       <form>
@@ -21,6 +22,7 @@ const MeComponent = ({ personalInfo }: Props) => {
             id="name"
             placeholder="Enter your full name"
             defaultValue={personalInfo.name}
+            onChange={e => onChange({ name: e.target.value })}
           />
         </div>
         <div className="form-group">
@@ -30,9 +32,10 @@ const MeComponent = ({ personalInfo }: Props) => {
           <input
             type="text"
             className="form-control"
-            id="dob"
+            id="dateOfBirth"
             placeholder="DD/MM/YYYY"
             defaultValue={personalInfo.dateOfBirth}
+            onChange={e => onChange({ dateOfBirth: e.target.value })}
           />
         </div>
       </form>

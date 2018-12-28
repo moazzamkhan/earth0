@@ -3,28 +3,29 @@ import React from "react"
 import UserAccount from "./UserAccount"
 import "./UserAccountComponent.less"
 import PersonalInfoComponent from "./personal-info/PersonalInfoComponent"
-import PersonalInfo from "./personal-info/PersonalInfo";
+import PersonalInfo from "./personal-info/PersonalInfo"
+import clone from "clone"
 
-const UserAccountComponent = ({ thing }: { thing: Thing }) => {
-  console.log(thing)
-  return <div id="user-account-box">{thing.id === "personal-info" && <PersonalInfoComponent personalInfo={thing.value as PersonalInfo}/>}</div>
+interface Props {
+  thing: Thing
+  onChange: any
 }
 
-/* <form>
-<div className="form-group">
-  <input
-    type="email"
-    className="form-control border-warning"
-    id="exampleInputEmail1"
-    aria-describedby="emailHelp"
-    placeholder="Enter email"
-  />
-  <small className="form-text text-muted">Email address</small>
-</div>
-<div className="form-group">
-  <input type="password" className="form-control" id="exampleInputPassword1" placeholder="Password" />
-  <small className="form-text text-muted">Password</small>
-</div>
-</form> */
+const UserAccountComponent = ({ thing, onChange }: Props) => {
+  return (
+    <div id="user-account-box">
+      {thing.id === "personal-info" && (
+        <PersonalInfoComponent
+          personalInfo={thing.value as PersonalInfo}
+          onChange={(personalInfo: PersonalInfo) => {
+            const newThing = clone(thing)
+            newThing.value = Object.assign({}, newThing.value, personalInfo)
+            onChange(newThing)
+          }}
+        />
+      )}
+    </div>
+  )
+}
 
 export default UserAccountComponent
