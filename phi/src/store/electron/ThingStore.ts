@@ -3,22 +3,7 @@ import mkdirp from "mkdirp"
 import os from "os"
 import path from "path"
 
-const defaultData = {
-  things: [
-    {
-      created: 1540401395373,
-      id: "user-account",
-      name: "User Account",
-      type: "user-account",
-      value: {
-        personalInfo: { name: "" },
-        settings: {
-          savedAt: "~/.everything/et.json"
-        }
-      }
-    }
-  ]
-}
+import defaultData from "../default-data.json"
 
 export class ThingStore {
   private filepath: string = path.join(os.homedir(), ".everything", "et.json")

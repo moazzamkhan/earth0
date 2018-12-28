@@ -1,27 +1,30 @@
 import { Thing } from "epsilon-base"
 import React from "react"
 import UserAccount from "./UserAccount"
+import "./UserAccountComponent.less"
+import PersonalInfoComponent from "./personal-info/PersonalInfoComponent"
+import PersonalInfo from "./personal-info/PersonalInfo";
 
 const UserAccountComponent = ({ thing }: { thing: Thing }) => {
-  const userAccount = thing.value as UserAccount
-  return (
-    <div id="personInfo">
-      <form>
-        <div className="form-group row">
-          <label htmlFor="name" className="col-sm-2 col-form-label col-form-label-lg">
-            Name
-          </label>
-          <div className="col-sm-10">
-            <input
-              className="form-control form-control-lg"
-              id="saved-at"
-              defaultValue={userAccount.personalInfo.name}
-            />
-          </div>
-        </div>
-      </form>
-    </div>
-  )
+  console.log(thing)
+  return <div id="user-account-box">{thing.id === "personal-info" && <PersonalInfoComponent personalInfo={thing.value as PersonalInfo}/>}</div>
 }
+
+/* <form>
+<div className="form-group">
+  <input
+    type="email"
+    className="form-control border-warning"
+    id="exampleInputEmail1"
+    aria-describedby="emailHelp"
+    placeholder="Enter email"
+  />
+  <small className="form-text text-muted">Email address</small>
+</div>
+<div className="form-group">
+  <input type="password" className="form-control" id="exampleInputPassword1" placeholder="Password" />
+  <small className="form-text text-muted">Password</small>
+</div>
+</form> */
 
 export default UserAccountComponent

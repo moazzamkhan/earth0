@@ -1,0 +1,37 @@
+#personal-info-box {
+  display: flex;
+  height: 100%;
+
+  .nav.nav-pills {
+    padding: 10px 40px 10px 10px;
+    height: 100%;
+    background-color: #37474F;
+    .nav-link {
+      border-radius: 0;
+      padding: 5px;
+      width: 200px;
+      font-size: 14px;
+
+      margin-bottom: 5px;
+      color: #cce5ff;
+      border-bottom: 1px solid transparent;
+
+      &:hover {
+        color: white;
+        border-bottom: 1px solid white;
+      }
+
+      &.active {
+        background-color: transparent;
+        border-bottom: 1px solid #ffc107;
+        color: #ffc107;
+      }
+    }
+  }
+
+  .tab-content {
+    flex-grow: 1;
+    background-color: #263238;
+    padding: 10px;
+  }
+}

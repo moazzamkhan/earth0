@@ -34,8 +34,8 @@ export class ThingUtils {
     }
   }
 
-  static getUserAccount(appState: AppState): Thing {
-    return appState.things.find((thing: Thing) => thing.type == "user-account")
+  static getPersonalInfo(appState: AppState): Thing {
+    return appState.things.find((thing: Thing) => thing.id == "personal-info")
   }
 }
 
