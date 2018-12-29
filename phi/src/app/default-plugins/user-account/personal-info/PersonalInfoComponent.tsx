@@ -4,6 +4,7 @@ import MeComponent from "../about-me-component/AboutMeComponent"
 import "./PersonalInfoComponent.less"
 import Address from "../addresses-component/Address"
 import { Thing } from "epsilon-base"
+import PhonesComponent from "../phones-component/PhonesComponent"
 
 interface Props {
   personalThings: Thing[]
@@ -15,7 +16,7 @@ interface State {
 }
 
 export default class PersonalInfoComponent extends React.Component<Props, State> {
-  constructor(props: Props) {    
+  constructor(props: Props) {
     super(props)
     this.state = { activeTabId: props.personalThings[0].id }
     this.switchTab = this.switchTab.bind(this)
@@ -54,6 +55,12 @@ export default class PersonalInfoComponent extends React.Component<Props, State>
           {this.state.activeTabId === "addresses" && (
             <AddressesComponent
               thing={personalThings.find((thing: Thing) => thing.id === "addresses")}
+              onChange={this.props.onChange}
+            />
+          )}
+          {this.state.activeTabId === "phones" && (
+            <PhonesComponent
+              thing={personalThings.find((thing: Thing) => thing.id === "phones")}
               onChange={this.props.onChange}
             />
           )}

@@ -28,13 +28,6 @@ export interface ImportantDate {
   date: string
 }
 
-export interface Phone {
-  label: string
-  countryCode: string
-  areaCode: string
-  phoneNumber: string
-  mobile: boolean
-}
 
 export interface Email {
   label: string

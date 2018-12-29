@@ -18,7 +18,22 @@ export class ThingUtils {
     return newThing
   }
 
-  static updateThingValueArray(thing: Thing, value: any) {}
+  static updateThingValueArray(thing: Thing, value: any, index: number): Thing {
+    const newThing = clone(thing)
+
+    if (index < 0) {
+      newThing.value = [value].concat(newThing.value)
+    } else {
+      newThing.value[index] = value
+    }
+    return newThing
+  }
+
+  static deleteThingValueArray(thing: Thing, index: number): Thing {
+    const newThing = clone(thing)
+    ;(newThing.value as any[]).splice(index, 1)
+    return newThing
+  }
 
   static createThingInstance(type: string, name: string, value: any) {
     return Object.assign(

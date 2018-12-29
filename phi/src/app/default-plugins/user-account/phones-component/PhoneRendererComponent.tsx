@@ -1,21 +1,19 @@
 import React from "react"
-import Address from "./Address"
-import "./AddressRendererComponent.less"
+import Phone from "./Phone"
 
 interface Props {
-  item: Address
+  item: Phone
   onEdit: any
   onDelete: any
 }
-const AddressRendererComponent = ({ item, onEdit, onDelete }: Props) => {
+const PhoneRendererComponent = ({ item, onEdit, onDelete }: Props) => {
   return (
     <div className="card">
       <div className="card-body">
         <h5 className="card-title text-muted">{item.label}</h5>
         <p className="card-text">
-          {`${item.houseNumber}, ${item.building}, ${item.street}, ${item.city} ${item.pincode}, ${item.state}, ${
-            item.country
-          }`}
+          {item.mobile ? <i className="fas fa-mobile-alt" /> : <i className="fas fa-phone" />}
+          {` (+${item.countryCode}) ${item.mobile ? "" : item.areaCode + " "}${item.phoneNumber}`}
         </p>
         <a href="javascript: void(0)" className="card-link" onClick={onEdit}>
           Edit
@@ -28,4 +26,4 @@ const AddressRendererComponent = ({ item, onEdit, onDelete }: Props) => {
   )
 }
 
-export default AddressRendererComponent
+export default PhoneRendererComponent
