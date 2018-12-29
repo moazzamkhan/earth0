@@ -19,6 +19,7 @@ const component = ({ thing, things, onThingChanged }: Props) => {
 }
 
 const mapStateToProps = (state: AppState) => {
+  console.log(state.route)
   return {
     thing: state.things.filter((t: Thing) => t.id === state.route.thingId)[0] || state.things[0],
     things: state.things.filter((t: Thing) => t.type === state.route.thingType)

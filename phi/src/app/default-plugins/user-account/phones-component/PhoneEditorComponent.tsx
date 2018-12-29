@@ -35,69 +35,73 @@ export default class PhoneEditorComponent extends React.Component<Props, any> {
         <hr />
         <form>
           <div className="form-group">
-            <div className="form-group">
-              <label className="form-text text-muted" htmlFor="label">
-                Label
+            <label className="form-text text-muted" htmlFor="label">
+              Label
+            </label>
+            <input
+              type="text"
+              className="form-control"
+              id="label"
+              placeholder="label"
+              defaultValue={phone.label}
+              onChange={this.onChange}
+            />
+          </div>
+          <div className="form-row">
+            <div className="form-group col-md-3">
+              <label className="form-text text-muted" htmlFor="mobile">
+                Mobile
               </label>
+
               <input
-                type="text"
+                type="checkbox"
                 className="form-control"
-                id="label"
-                placeholder="label"
-                defaultValue={phone.label}
+                id="mobile"
+                defaultChecked={phone.mobile}
                 onChange={this.onChange}
               />
             </div>
 
-            <label className="form-text text-muted" htmlFor="phoneNumber">
-              Phone Number
-            </label>
-            <input
-              type="text"
-              className="form-control"
-              id="phoneNumber"
-              placeholder="Phone Number"
-              defaultValue={phone.phoneNumber}
-              onChange={this.onChange}
-            />
-          </div>
-          <div className="form-group">
-            <label className="form-text text-muted" htmlFor="areaCode">
-              Area Code
-            </label>
-            <input
-              type="text"
-              className="form-control"
-              id="areaCode"
-              placeholder="Area Code"
-              defaultValue={phone.areaCode}
-              onChange={this.onChange}
-            />
-          </div>
-          <div className="form-group">
-            <label className="form-text text-muted" htmlFor="countryCode">
-              Country Code
-            </label>
-            <input
-              type="text"
-              className="form-control"
-              id="countryCode"
-              placeholder="Country Code"
-              defaultValue={phone.countryCode}
-              onChange={this.onChange}
-            />
-          </div>
-          <div className="form-group">
-            <label className="form-text text-muted" htmlFor="mobile">
-              Mobile
-            </label>
-            <input
-              type="checkbox"
-              className="form-control"
-              id="mobile"
-              defaultChecked={phone.mobile}
-              onChange={this.onChange}
-            />
+            <div className="form-group col-md-3">
+              <label className="form-text text-muted" htmlFor="countryCode">
+                Country Code
+              </label>
+              <input
+                type="text"
+                className="form-control"
+                id="countryCode"
+                placeholder="Country Code"
+                defaultValue={phone.countryCode}
+                onChange={this.onChange}
+              />
+            </div>
+            <div className="form-group col-md-3">
+              <label className="form-text text-muted" htmlFor="areaCode">
+                Area Code
+              </label>
+              <input
+                type="text"
+                className="form-control"
+                id="areaCode"
+                placeholder="Area Code"
+                defaultValue={phone.areaCode}
+                onChange={this.onChange}
+              />
+            </div>
+
+            <div className="form-group col-md-3">
+              <label className="form-text text-muted" htmlFor="phoneNumber">
+                Phone Number
+              </label>
+              <input
+                type="text"
+                className="form-control"
+                id="phoneNumber"
+                placeholder="Phone Number"
+                defaultValue={phone.phoneNumber}
+                onChange={this.onChange}
+              />
+            </div>
           </div>
         </form>
       </div>

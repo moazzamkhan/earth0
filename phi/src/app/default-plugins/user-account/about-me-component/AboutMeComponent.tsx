@@ -11,35 +11,33 @@ interface Props {
 
 const AboutMeComponent = ({ thing, onChange }: Props) => {
   const aboutMe = thing.value as AboutMe
+  const items = [
+    { label: "Name", property: "name", placeholder: "Your full name" },
+    { label: "Date of Birth", property: "dateOfBirth", placeholder: "DD/MM/YYYY" },
+    { label: "Gender", property: "gender", placeholder: "Your gender" },
+    { label: "Marital Status", property: "maritalStatus", placeholder: "Your Maritus Status" },
+    { label: "Blood Group", property: "bloodGroup", placeholder: "Your Blood Group" }
+  ]
+
   return (
     <div id="me-box">
       <form>
-        <div className="form-group">
-          <label className="form-text text-muted" htmlFor="name">
-            Name
-          </label>
-          <input
-            type="text"
-            className="form-control"
-            id="name"
-            placeholder="Enter your full name"
-            defaultValue={aboutMe.name}
-            onChange={e => onChange(ThingUtils.updateThingValue(thing, { name: e.target.value }))}
-          />
-        </div>
-        <div className="form-group">
-          <label className="form-text text-muted" htmlFor="dateOfBirth">
-            Date of Birth
-          </label>
-          <input
-            type="text"
-            className="form-control"
-            id="dateOfBirth"
-            placeholder="DD/MM/YYYY"
-            defaultValue={aboutMe.dateOfBirth}
-            onChange={e => onChange(ThingUtils.updateThingValue(thing, { dateOfBirth: e.target.value }))}
-          />
-        </div>
+        {items.map((item: any) => (
+          <div className="form-group" key={item.property}>
+            <label className="form-text text-muted" htmlFor="name">
+              {item.label}
+            </label>
+
+            <input
+              type="text"
+              className="form-control"
+              id={item.property}
+              placeholder={item.placeholder}
+              defaultValue={(aboutMe as any)[item.property]}
+              onChange={e => onChange(ThingUtils.updateThingValue(thing, { [item.property]: e.target.value }))}
+            />
+          </div>
+        ))}
       </form>
     </div>
   )

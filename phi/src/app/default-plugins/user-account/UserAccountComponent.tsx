@@ -13,7 +13,7 @@ interface Props {
 
 const personalProps = ["about-me", "addresses", "phones", "emails"]
 
-const UserAccountComponent = ({ thing, things, onChange }: Props) => {
+const UserAccountComponent = ({ thing, things, onChange }: Props) => {  
   const personalThings: Thing[] = personalProps.map((id: any) => things.find((thing: Thing) => thing.id === id))
   return (
     <div id="user-account-box">

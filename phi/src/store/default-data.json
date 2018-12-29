@@ -7,7 +7,10 @@
       "type": "user-account",
       "value": {
         "name": "Moazzam Khan",
-        "dateOfBirth": "26/10/1983"
+        "dateOfBirth": "26/10/1983",
+        "bloodGroup": "B+",
+        "gender": "Male",
+        "maritalStatus": "Married"
       }
     },
     {

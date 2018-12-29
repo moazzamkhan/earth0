@@ -1,4 +1,3 @@
-import Address from "../addresses-component/Address"
 
 // export default interface PersonalInfo {
 //   aboutMe: AboutMe
@@ -11,6 +10,9 @@ import Address from "../addresses-component/Address"
 export interface AboutMe {
   name: string
   dateOfBirth: string
+  bloodGroup: string
+  gender: string
+  maritalStatus: string
 }
 
 export interface Education {
@@ -28,8 +30,3 @@ export interface ImportantDate {
   date: string
 }
 
-
-export interface Email {
-  label: string
-  email: string
-}

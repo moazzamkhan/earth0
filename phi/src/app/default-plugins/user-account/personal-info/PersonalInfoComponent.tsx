@@ -5,6 +5,8 @@ import "./PersonalInfoComponent.less"
 import Address from "../addresses-component/Address"
 import { Thing } from "epsilon-base"
 import PhonesComponent from "../phones-component/PhonesComponent"
+import AboutMeComponent from "../about-me-component/AboutMeComponent"
+import EmailsComponent from "../emails-component/EmailComponent"
 
 interface Props {
   personalThings: Thing[]
@@ -28,6 +30,14 @@ export default class PersonalInfoComponent extends React.Component<Props, State>
 
   render() {
     const { personalThings } = this.props
+    const componentMap: any = {
+      "about-me": AboutMeComponent,
+      addresses: AddressesComponent,
+      phones: PhonesComponent,
+      emails: EmailsComponent
+    }
+
+    const Comp = componentMap[this.state.activeTabId]
     return (
       <div id="personal-info-box">
         <div className="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
@@ -46,24 +56,10 @@ export default class PersonalInfoComponent extends React.Component<Props, State>
           ))}
         </div>
         <div className="tab-content">
-          {this.state.activeTabId === "about-me" && (
-            <MeComponent
-              thing={personalThings.find((thing: Thing) => thing.id === "about-me")}
-              onChange={this.props.onChange}
-            />
-          )}
-          {this.state.activeTabId === "addresses" && (
-            <AddressesComponent
-              thing={personalThings.find((thing: Thing) => thing.id === "addresses")}
-              onChange={this.props.onChange}
-            />
-          )}
-          {this.state.activeTabId === "phones" && (
-            <PhonesComponent
-              thing={personalThings.find((thing: Thing) => thing.id === "phones")}
-              onChange={this.props.onChange}
-            />
-          )}
+          <Comp
+            thing={personalThings.find((thing: Thing) => thing.id === this.state.activeTabId)}
+            onChange={this.props.onChange}
+          />
         </div>
       </div>
     )
