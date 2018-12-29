@@ -1,14 +1,16 @@
-import { Thing } from "epsilon-base"
 import React from "react"
-import "./MeComponent.less"
-import PersonalInfo from "../personal-info/PersonalInfo"
+import "./AboutMeComponent.less"
+import { AboutMe } from "../personal-info/PersonalInfo"
+import { Thing } from "epsilon-base"
+import { ThingUtils } from "../../../utils/thing.utils"
 
 interface Props {
-  personalInfo: PersonalInfo
+  thing: Thing
   onChange: any
 }
 
-const MeComponent = ({ personalInfo, onChange }: Props) => {
+const AboutMeComponent = ({ thing, onChange }: Props) => {
+  const aboutMe = thing.value as AboutMe
   return (
     <div id="me-box">
       <form>
@@ -21,8 +23,8 @@ const MeComponent = ({ personalInfo, onChange }: Props) => {
             className="form-control"
             id="name"
             placeholder="Enter your full name"
-            defaultValue={personalInfo.name}
-            onChange={e => onChange({ name: e.target.value })}
+            defaultValue={aboutMe.name}
+            onChange={e => onChange(ThingUtils.updateThingValue(thing, { name: e.target.value }))}
           />
         </div>
         <div className="form-group">
@@ -34,8 +36,8 @@ const MeComponent = ({ personalInfo, onChange }: Props) => {
             className="form-control"
             id="dateOfBirth"
             placeholder="DD/MM/YYYY"
-            defaultValue={personalInfo.dateOfBirth}
-            onChange={e => onChange({ dateOfBirth: e.target.value })}
+            defaultValue={aboutMe.dateOfBirth}
+            onChange={e => onChange(ThingUtils.updateThingValue(thing, { dateOfBirth: e.target.value }))}
           />
         </div>
       </form>
@@ -43,4 +45,4 @@ const MeComponent = ({ personalInfo, onChange }: Props) => {
   )
 }
 
-export default MeComponent
+export default AboutMeComponent

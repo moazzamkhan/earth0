@@ -3,15 +3,17 @@ import Address from "./Address"
 import "./AddressesComponent.less"
 import AddressRendererComponent from "./AddressRendererComponent"
 import AddressEditorComponent from "./AddressEditorComponent"
+import { Thing } from "epsilon-base"
 
 interface Props {
-  addresses: Address[]
+  thing: Thing
   onChange: any
 }
 
 interface State {
   // -2, not editing, -1 for new, otherwise index
   editing: number
+  addresses: Address[]
 }
 const NOT_EDITING = -2
 const NEW_ADDRESS = -1
@@ -19,12 +21,14 @@ const NEW_ADDRESS = -1
 export default class AddressesComponent extends React.Component<Props, State> {
   constructor(props: Props) {
     super(props)
-    this.state = { editing: NOT_EDITING }
+    this.state = { editing: NOT_EDITING, addresses: props.thing.value as Address[] }
     this.onChangeEditStatus = this.onChangeEditStatus.bind(this)
   }
 
   render() {
-    const { addresses, onChange } = this.props    
+    const { onChange } = this.props
+    const addresses = this.state.addresses
+    
     return (
       <div id="addresses-box">
         {this.state.editing !== NOT_EDITING && (
@@ -49,7 +53,11 @@ export default class AddressesComponent extends React.Component<Props, State> {
         <hr />
         {this.state.editing === NOT_EDITING &&
           addresses.map((address: Address, i: number) => (
-            <AddressRendererComponent key={`address-${i}`} address={address} onEdit={()=> this.onChangeEditStatus(i)}/>
+            <AddressRendererComponent
+              key={`address-${i}`}
+              address={address}
+              onEdit={() => this.onChangeEditStatus(i)}
+            />
           ))}
       </div>
     )

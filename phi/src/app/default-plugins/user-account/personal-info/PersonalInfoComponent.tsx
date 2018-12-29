@@ -1,31 +1,12 @@
 import React from "react"
 import AddressesComponent from "../addresses-component/AddressesComponent"
-import MeComponent from "../me-component/MeComponent"
-import PersonalInfo from "./PersonalInfo"
+import MeComponent from "../about-me-component/AboutMeComponent"
 import "./PersonalInfoComponent.less"
 import Address from "../addresses-component/Address"
-
-const data = [
-  {
-    id: "me",
-    label: "Me"
-  },
-  {
-    id: "addresses",
-    label: "Addresses"
-  },
-  {
-    id: "phones",
-    label: "Phones"
-  },
-  {
-    id: "emails",
-    label: "Emails"
-  }
-]
+import { Thing } from "epsilon-base"
 
 interface Props {
-  personalInfo: PersonalInfo
+  personalThings: Thing[]
   onChange: any
 }
 
@@ -33,13 +14,11 @@ interface State {
   activeTabId: string
 }
 
-export default class PersonalInfoComponent1 extends React.Component<Props, State> {
-  constructor(props: Props) {
+export default class PersonalInfoComponent extends React.Component<Props, State> {
+  constructor(props: Props) {    
     super(props)
-    this.state = { activeTabId: "me" }
+    this.state = { activeTabId: props.personalThings[0].id }
     this.switchTab = this.switchTab.bind(this)
-    this.onMeChange = this.onMeChange.bind(this)
-    this.onAddressChange = this.onAddressChange.bind(this)
   }
 
   switchTab(tabId: string) {
@@ -47,42 +26,39 @@ export default class PersonalInfoComponent1 extends React.Component<Props, State
   }
 
   render() {
-    const { personalInfo } = this.props
-    console.log(personalInfo)
+    const { personalThings } = this.props
     return (
       <div id="personal-info-box">
         <div className="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
-          {data.map((item: any) => (
+          {personalThings.map((thing: Thing) => (
             <a
-              className={`nav-link ${this.state.activeTabId === item.id ? "active" : ""}`}
-              id={item.id}
-              key={item.id}
+              className={`nav-link ${this.state.activeTabId === thing.id ? "active" : ""}`}
+              id={thing.id}
+              key={thing.id}
               data-toggle="pill"
               href="javascript:void(0)"
               role="tab"
-              onClick={() => this.switchTab(item.id)}
+              onClick={() => this.switchTab(thing.id)}
             >
-              {item.label}
+              {thing.name}
             </a>
           ))}
         </div>
         <div className="tab-content">
-          {this.state.activeTabId === "me" && <MeComponent personalInfo={personalInfo} onChange={this.onMeChange} />}
+          {this.state.activeTabId === "about-me" && (
+            <MeComponent
+              thing={personalThings.find((thing: Thing) => thing.id === "about-me")}
+              onChange={this.props.onChange}
+            />
+          )}
           {this.state.activeTabId === "addresses" && (
-            <AddressesComponent addresses={personalInfo.addresses} onChange={this.onAddressChange} />
+            <AddressesComponent
+              thing={personalThings.find((thing: Thing) => thing.id === "addresses")}
+              onChange={this.props.onChange}
+            />
           )}
         </div>
       </div>
     )
-  }
-
-  onMeChange(personalInfo: PersonalInfo) {
-    this.props.onChange(personalInfo)
-  }
-
-  onAddressChange(addresses: Address[]) {
-    console.log(addresses)
-    this.props.personalInfo.addresses = [].concat(addresses)
-    // this.props.onChange(this.props.personalInfo)
   }
 }

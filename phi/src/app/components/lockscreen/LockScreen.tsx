@@ -1,18 +1,17 @@
-import clone from "clone";
-import { Thing } from "epsilon-base";
-import moment from "moment";
-import React from "react";
-import { connect } from "react-redux";
-import { updateRoute } from "../../actions/route.actions";
-import PersonalInfo from "../../default-plugins/user-account/personal-info/PersonalInfo";
-import AppState from "../../models/AppState";
-import RouteState from "../../models/RouteState";
-import { ThingUtils } from "../../utils/thing.utils";
-import { updateThing } from "../things/things.action";
-import "./LockScreen.less";
-import { NameInputComponent } from "./NameInputComponet";
-import vid from "./screensaver.mp4";
-
+import clone from "clone"
+import { Thing } from "epsilon-base"
+import moment from "moment"
+import React from "react"
+import { connect } from "react-redux"
+import { updateRoute } from "../../actions/route.actions"
+import { AboutMe } from "../../default-plugins/user-account/personal-info/PersonalInfo"
+import AppState from "../../models/AppState"
+import RouteState from "../../models/RouteState"
+import { ThingUtils } from "../../utils/thing.utils"
+import { updateThing } from "../things/things.action"
+import "./LockScreen.less"
+import { NameInputComponent } from "./NameInputComponet"
+import vid from "./screensaver.mp4"
 
 interface Props {
   thing: Thing
@@ -26,7 +25,7 @@ const component = ({ thing, onLogin, onNameSet }: Props) => (
       <source src={vid} type="video/mp4" />
     </video>
     <div id="user-info-summary">
-      {!(thing.value as PersonalInfo).name ? (
+      {!(thing.value as AboutMe).name ? (
         <NameInputComponent
           onChange={(name: string) => {
             const t = clone(thing)
@@ -36,7 +35,7 @@ const component = ({ thing, onLogin, onNameSet }: Props) => (
         />
       ) : (
         <button id="login-button" type="button" className="btn btn-warning" onClick={e => onLogin(thing)}>
-          {(thing.value as PersonalInfo).name} <i className="fas fa-arrow-right" />
+          {(thing.value as AboutMe).name} <i className="fas fa-arrow-right" />
         </button>
       )}
 
@@ -48,7 +47,7 @@ const component = ({ thing, onLogin, onNameSet }: Props) => (
 
 const mapStateToProps = (state: AppState) => {
   return {
-    thing: ThingUtils.getPersonalInfo(state)
+    thing: ThingUtils.getAboutMe(state)
   }
 }
 
