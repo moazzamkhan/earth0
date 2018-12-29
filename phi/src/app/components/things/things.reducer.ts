@@ -10,6 +10,7 @@ const things = (state: Thing[] = [], action: Action) => {
     case ThingActions.DELETE_THING:      
       return state.filter((t: Thing) => t.id !== action.payload)
 
+      // always passed a cloned version of thing
     case ThingActions.UPDATE_THING:
       return state.map((t: Thing) =>
         t.id === action.payload.id ? Object.assign({}, t, action.payload) : t

@@ -4,15 +4,17 @@ import "./AddressesComponent.less"
 
 interface Props {
   address: Address
+  onSave: any
+  onCancel: any
 }
-const AddressEditorComponent = ({ address = {} as Address }: Props) => {
+const AddressEditorComponent = ({ address = {} as Address, onSave, onCancel }: Props) => {
   return (
     <div id="address-editor-box">
       <div className="btn-group btn-group-sm" role="group">
-        <button type="button" className="btn btn-outline-secondary">
+        <button type="button" className="btn btn-outline-secondary" onClick={() => onCancel()}>
           Cancel Editing
         </button>
-        <button type="button" className="btn btn-outline-secondary">
+        <button type="button" className="btn btn-outline-secondary" onClick={() => onSave()}>
           Save Address
         </button>
       </div>

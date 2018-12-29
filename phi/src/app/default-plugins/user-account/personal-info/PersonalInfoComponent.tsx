@@ -1,8 +1,9 @@
-import React from "react";
-import AddressesComponent from "../addresses-component/AddressesComponent";
-import MeComponent from "../me-component/MeComponent";
-import PersonalInfo from "./PersonalInfo";
-import "./PersonalInfoComponent.less";
+import React from "react"
+import AddressesComponent from "../addresses-component/AddressesComponent"
+import MeComponent from "../me-component/MeComponent"
+import PersonalInfo from "./PersonalInfo"
+import "./PersonalInfoComponent.less"
+import Address from "../addresses-component/Address"
 
 const data = [
   {
@@ -46,7 +47,8 @@ export default class PersonalInfoComponent1 extends React.Component<Props, State
   }
 
   render() {
-    const { personalInfo, onChange } = this.props
+    const { personalInfo } = this.props
+    console.log(personalInfo)
     return (
       <div id="personal-info-box">
         <div className="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
@@ -58,7 +60,6 @@ export default class PersonalInfoComponent1 extends React.Component<Props, State
               data-toggle="pill"
               href="javascript:void(0)"
               role="tab"
-              aria-selected="true"
               onClick={() => this.switchTab(item.id)}
             >
               {item.label}
@@ -67,7 +68,9 @@ export default class PersonalInfoComponent1 extends React.Component<Props, State
         </div>
         <div className="tab-content">
           {this.state.activeTabId === "me" && <MeComponent personalInfo={personalInfo} onChange={this.onMeChange} />}
-          {this.state.activeTabId === "addresses" && <AddressesComponent addresses={personalInfo.addresses} />}
+          {this.state.activeTabId === "addresses" && (
+            <AddressesComponent addresses={personalInfo.addresses} onChange={this.onAddressChange} />
+          )}
         </div>
       </div>
     )
@@ -77,5 +80,9 @@ export default class PersonalInfoComponent1 extends React.Component<Props, State
     this.props.onChange(personalInfo)
   }
 
-  onAddressChange() {}
+  onAddressChange(addresses: Address[]) {
+    console.log(addresses)
+    this.props.personalInfo.addresses = [].concat(addresses)
+    // this.props.onChange(this.props.personalInfo)
+  }
 }
