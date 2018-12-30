@@ -7,13 +7,18 @@ let mainWindow
 
 function createWindow() {
   // Create the browser window.
-  mainWindow = new BrowserWindow({ width: 1280, height: 720, frame: false, nodeIntegration: true })
+  mainWindow = new BrowserWindow({
+    width: 1280,
+    height: 720,
+    frame: false,
+    webPreferences: { nodeIntegration: true }
+  })
 
   // and load the index.html of the app.
   mainWindow.loadFile("./dist/electron.html")
 
   // Open the DevTools.
-  // mainWindow.webContents.openDevTools()
+  mainWindow.webContents.openDevTools()
 
   // Emitted when the window is closed.
   mainWindow.on("closed", function() {

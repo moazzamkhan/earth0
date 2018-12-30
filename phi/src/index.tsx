@@ -18,8 +18,8 @@ if (process.env.PHI_CONTEXT === "browser") {
 storePromise.then((storeModule: any) => {
   const thingStore = new storeModule.ThingStore()
 
-  // const defaultData = Object.assign({}, thingStore.getData(), { route: { thingType: "locked", thingId: null } })
-  const defaultData =  thingStore.getData()
+  const defaultData = Object.assign({}, thingStore.getData(), { route: { thingType: "locked", thingId: null } })
+  // const defaultData =  thingStore.getData()
   const store = createStore(appStateReducer, defaultData)
 
   // const store = createStore(appStateReducer, thingStore.getData())

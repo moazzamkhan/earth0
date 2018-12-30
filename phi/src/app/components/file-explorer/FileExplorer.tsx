@@ -41,7 +41,7 @@ const component = ({ things, currentThing, currentType, readonly, onNewItem, onD
               href="javascript:void 0"
               id={t.id}
               key={t.id}
-              onClick={(e: SyntheticEvent) => onItemClick((e.currentTarget as HTMLAnchorElement).getAttribute("id"))}
+              onClick={(e: SyntheticEvent) => onItemClick(t)}
               className={`list-group-item list-group-item-action ${currentThing.id === t.id ? "active" : ""}`}
             >
               {t.name} <small>{moment(t.created).calendar()}</small>
@@ -66,10 +66,11 @@ const mapStateToProps = (state: AppState) => {
 
 const mapDispatchToProps = (dispatch: any, ownProps: any) => {
   return {
-    onItemClick: (id: string) => {
+    onItemClick: (thing: Thing) => {
       dispatch(
         updateRoute({
-          thingId: id
+          thingType: thing.type,
+          thingId: thing.id
         } as RouteState)
       )
     },

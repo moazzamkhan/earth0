@@ -57,8 +57,8 @@ const mapDispatchToProps = (dispatch: any) => {
       if (thing) {
         dispatch(
           updateRoute({
-            thingId: thing.id,
-            thingType: thing.type
+            thingType: thing.type,
+            thingId: thing.id
           } as RouteState)
         )
       }

@@ -1,12 +1,10 @@
-import React from "react"
-import AddressesComponent from "../addresses-component/AddressesComponent"
-import MeComponent from "../about-me-component/AboutMeComponent"
-import "./PersonalInfoComponent.less"
-import Address from "../addresses-component/Address"
 import { Thing } from "epsilon-base"
-import PhonesComponent from "../phones-component/PhonesComponent"
+import React from "react"
 import AboutMeComponent from "../about-me-component/AboutMeComponent"
+import AddressesComponent from "../addresses-component/AddressesComponent"
 import EmailsComponent from "../emails-component/EmailComponent"
+import PhonesComponent from "../phones-component/PhonesComponent"
+import "./PersonalInfoComponent.less"
 
 interface Props {
   personalThings: Thing[]
