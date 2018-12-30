@@ -1,26 +1,29 @@
+import clone from "clone"
 import { Thing } from "epsilon-base"
 import React from "react"
-import UserAccount from "./UserAccount"
-import "./UserAccountComponent.less"
+
 import PersonalInfoComponent from "./personal-info/PersonalInfoComponent"
-import PersonalInfo from "./personal-info/PersonalInfo"
-import clone from "clone"
+import "./UserAccountComponent.less"
 
 interface Props {
   thing: Thing
+  things: Thing[]
   onChange: any
 }
 
-const UserAccountComponent = ({ thing, onChange }: Props) => {
+const personalProps = ["about-me", "addresses", "phones", "emails"]
+
+const UserAccountComponent = ({ thing, things, onChange }: Props) => {  
+  const personalThings: Thing[] = personalProps.map((id: any) => things.find((thing: Thing) => thing.id === id))
   return (
     <div id="user-account-box">
-      {thing.id === "personal-info" && (
+      {personalProps.some((id: string) => thing.id === id) && (
         <PersonalInfoComponent
-          personalInfo={thing.value as PersonalInfo}
-          onChange={(personalInfo: PersonalInfo) => {
-            const newThing = clone(thing)
-            newThing.value = Object.assign({}, newThing.value, personalInfo)
-            onChange(newThing)
+          personalThings={personalThings}
+          onChange={(thing: Thing) => {
+            // expecting  a deep copied thing
+            console.log(thing)
+            onChange(thing)
           }}
         />
       )}

@@ -5,7 +5,36 @@ import AppState from "../models/AppState"
 import * as Notes from "e0-plugins-notes"
 import * as Thoughts from "e0-plugins-thoughts"
 import * as UserAccount from "../default-plugins/user-account/"
+import clone from "clone"
 export class ThingUtils {
+  /**
+   *
+   * @param thing
+   * @param value - not expecting a object with nested properties
+   */
+  static updateThingValue(thing: Thing, patch: any): Thing {
+    const newThing = clone(thing)
+    newThing.value = Object.assign(thing.value, patch)
+    return newThing
+  }
+
+  static updateThingValueArray(thing: Thing, value: any, index: number): Thing {
+    const newThing = clone(thing)
+
+    if (index < 0) {
+      newThing.value = [value].concat(newThing.value)
+    } else {
+      newThing.value[index] = value
+    }
+    return newThing
+  }
+
+  static deleteThingValueArray(thing: Thing, index: number): Thing {
+    const newThing = clone(thing)
+    ;(newThing.value as any[]).splice(index, 1)
+    return newThing
+  }
+
   static createThingInstance(type: string, name: string, value: any) {
     return Object.assign(
       {
@@ -34,8 +63,8 @@ export class ThingUtils {
     }
   }
 
-  static getPersonalInfo(appState: AppState): Thing {
-    return appState.things.find((thing: Thing) => thing.id == "personal-info")
+  static getAboutMe(appState: AppState): Thing {
+    return appState.things.find((thing: Thing) => thing.id == "about-me")
   }
 }
 

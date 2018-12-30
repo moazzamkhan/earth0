@@ -1,22 +1,17 @@
-import React from "react"
-import Address from "./Address"
-import "./AddressRendererComponent.less"
+import React from "react";
+import Email from "./Email";
 
 interface Props {
-  item: Address
+  item: Email
   onEdit: any
   onDelete: any
 }
-const AddressRendererComponent = ({ item, onEdit, onDelete }: Props) => {
+const EmailRendererComponent = ({ item, onEdit, onDelete }: Props) => {
   return (
     <div className="card">
       <div className="card-body">
         <h5 className="card-title text-muted">{item.label}</h5>
-        <p className="card-text">
-          {`${item.houseNumber}, ${item.building}, ${item.street}, ${item.city} ${item.pincode}, ${item.state}, ${
-            item.country
-          }`}
-        </p>
+        <p className="card-text">{item.email}</p>
         <a href="javascript: void(0)" className="card-link" onClick={onEdit}>
           Edit
         </a>
@@ -28,4 +23,4 @@ const AddressRendererComponent = ({ item, onEdit, onDelete }: Props) => {
   )
 }
 
-export default AddressRendererComponent
+export default EmailRendererComponent

@@ -1,12 +1,18 @@
-import Address from "../addresses-component/Address";
 
-export default interface PersonalInfo {
+// export default interface PersonalInfo {
+//   aboutMe: AboutMe
+//   phones: Phone[]
+//   addresses: Address[]
+//   importantDates: ImportantDate[]
+//   education: Education[]
+// }
+
+export interface AboutMe {
   name: string
   dateOfBirth: string
-  phones: Phone[]
-  addresses: Address[]
-  importantDates: ImportantDate[]
-  education: Education[]
+  bloodGroup: string
+  gender: string
+  maritalStatus: string
 }
 
 export interface Education {
@@ -24,15 +30,3 @@ export interface ImportantDate {
   date: string
 }
 
-export interface Phone {
-  label: string
-  countryCode: string
-  areaCode: string
-  phone: string
-  mobile: boolean
-}
-
-export interface Email {
-  label: string
-  email: string
-}
