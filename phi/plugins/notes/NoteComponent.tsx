@@ -1,6 +1,6 @@
 import { convertToRaw, EditorState } from "draft-js"
 import React, { Component } from "react"
-import {Thing} from "epsilon-base"
+import {Thing} from "e0-base"
 import NoteEditor from "./NoteEditor"
 
 interface Props {

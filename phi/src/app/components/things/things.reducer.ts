@@ -1,5 +1,5 @@
 import Action from "../../models/Action"
-import {Thing} from "epsilon-base"
+import {Thing} from "e0-base"
 import { ThingActions } from "./things.action"
 
 const things = (state: Thing[] = [], action: Action) => {

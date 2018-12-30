@@ -1,4 +1,4 @@
-import {Thing} from "epsilon-base"
+import {Thing} from "e0-base"
 
 export const enum ThingActions {
   ADD_THING = "ADD_THING",

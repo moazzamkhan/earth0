@@ -1,5 +1,5 @@
 import clone from "clone"
-import { Thing } from "epsilon-base"
+import { Thing } from "e0-base"
 import React from "react"
 
 import PersonalInfoComponent from "./personal-info/PersonalInfoComponent"
