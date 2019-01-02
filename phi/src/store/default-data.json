@@ -6,11 +6,11 @@
       "name": "Personal Information",
       "type": "user-account",
       "value": {
-        "name": "Moazzam Khan",
-        "dateOfBirth": "26/10/1983",
-        "bloodGroup": "B+",
-        "gender": "Male",
-        "maritalStatus": "Married"
+        "name": "",
+        "dateOfBirth": "",
+        "bloodGroup": "",
+        "gender": "",
+        "maritalStatus": ""
       }
     },
     {
@@ -18,65 +18,21 @@
       "id": "addresses",
       "name": "Addresses",
       "type": "user-account/personal-info",
-      "value": [
-        {
-          "label": "Home",
-          "houseNumber": "A 101",
-          "building": "MDVR Prime Rose",
-          "street": "Begur-Koppa Road",
-          "city": "Bangalore",
-          "pincode": "560068",
-          "state": "Kartanaka",
-          "country": "India"
-        },
-        {
-          "label": "Work",
-          "houseNumber": "Ground and 3rd Floor",
-          "building": "RMZ Titanium Building",
-          "street": "135, Old Airport Road, Kodihalli",
-          "city": "Bangalore",
-          "pincode": "560017",
-          "state": "Kartanaka",
-          "country": "India"
-        }
-      ]
+      "value": []
     },
     {
       "created": 1540401395373,
       "id": "phones",
       "name": "Phones",
       "type": "user-account/personal-info",
-      "value": [
-        {
-          "label": "Home",
-          "countryCode": "91",
-          "phoneNumber": "9740087250",
-          "mobile": true
-        },
-        {
-          "label": "Work",
-          "countryCode": "91",
-          "areaCode": "80",
-          "phoneNumber": "41371527",
-          "mobile": false
-        }
-      ]
+      "value": []
     },
     {
       "created": 1540401395373,
       "id": "emails",
       "name": "Emails",
       "type": "user-account/personal-info",
-      "value": [
-        {
-          "label": "Home",
-          "email": "0moazzam.khan@gmail.com"
-        },
-        {
-          "label": "Work",
-          "email": "moazzamkhan@fico.com"
-        }
-      ]
+      "value": []
     },
 
     {
