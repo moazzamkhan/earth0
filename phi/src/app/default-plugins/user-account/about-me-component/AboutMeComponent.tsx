@@ -1,7 +1,7 @@
 import React from "react"
 import "./AboutMeComponent.less"
 import { AboutMe } from "../personal-info/PersonalInfo"
-import { Thing } from "epsilon-base"
+import { Thing } from "e0-base"
 import { ThingUtils } from "../../../utils/thing.utils"
 
 interface Props {

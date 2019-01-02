@@ -1,5 +1,5 @@
 import clone from "clone"
-import { Thing } from "epsilon-base"
+import { Thing } from "e0-base"
 import moment from "moment"
 import React from "react"
 import { connect } from "react-redux"

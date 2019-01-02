@@ -1,4 +1,4 @@
-import {Thing} from "epsilon-base"
+import {Thing} from "e0-base"
 import AppRoute from "./RouteState";
 
 export default interface AppState {

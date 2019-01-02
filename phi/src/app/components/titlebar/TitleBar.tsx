@@ -1,7 +1,7 @@
 import React from "react"
 import { connect } from "react-redux"
 import AppState from "../../models/AppState"
-import { Thing } from "epsilon-base"
+import { Thing } from "e0-base"
 import "./TitleBar.less"
 import WindowButtons from "./WindowButtons"
 import moment from "moment"

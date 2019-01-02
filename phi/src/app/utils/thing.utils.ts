@@ -1,9 +1,9 @@
 import uniqid from "uniqid"
-import { Thing } from "epsilon-base"
+import { Thing } from "e0-base"
 import AppState from "../models/AppState"
 
-import * as Notes from "e0-plugins-notes"
-import * as Thoughts from "e0-plugins-thoughts"
+import * as Notes from "../../../plugins/notes"
+import * as Thoughts from "../../../plugins/thoughts"
 import * as UserAccount from "../default-plugins/user-account/"
 import clone from "clone"
 export class ThingUtils {
