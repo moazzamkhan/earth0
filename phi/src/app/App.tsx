@@ -8,10 +8,12 @@ import AppState from "./models/AppState"
 import RouteState from "./models/RouteState"
 import { connect } from "react-redux"
 import LockScreen from "./components/lockscreen/LockScreen"
+import UserAccountFileExplorer from "./components/user-account-file-explorer/UserAccountFileExplorer"
 
 // 1. LockScreen - // locked/null
 // 2. EverythingScreen - default - /user-account/user-account/
-const component = ({ thingId, thingType }: RouteState) => {  
+const component = ({ thingId, thingType }: RouteState) => {
+  const isUserAccountPage = thingType && thingType.indexOf("user-account") > -1
   if (thingType === "locked") {
     return (
       <div id="everything">
@@ -24,7 +26,16 @@ const component = ({ thingId, thingType }: RouteState) => {
         <div id="side-toolbar-wrapper">
           <SideToolbar />
         </div>
-        <div id="file-explorer-wrapper">{<FileExplorer />}</div>
+        {isUserAccountPage && (
+          <div id="file-explorer-wrapper">
+            <UserAccountFileExplorer />
+          </div>
+        )}
+        {!isUserAccountPage && (
+          <div id="file-explorer-wrapper">
+            <FileExplorer />
+          </div>
+        )}
         <div id="thing-panel-wrapper">
           <TitleBar />
           {thingId && <ThingPanel />}

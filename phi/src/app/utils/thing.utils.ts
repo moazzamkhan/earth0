@@ -12,10 +12,8 @@ export class ThingUtils {
    * @param thing
    * @param value - not expecting a object with nested properties
    */
-  static updateThingValue(thing: Thing, patch: any): Thing {
-    const newThing = clone(thing)
-    newThing.value = Object.assign(thing.value, patch)
-    return newThing
+  static updateThing(thing: Thing, patch: any): Thing {
+    return Object.assign(thing, patch)
   }
 
   static updateThingValueArray(thing: Thing, value: any, index: number): Thing {

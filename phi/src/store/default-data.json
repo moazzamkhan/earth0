@@ -2,39 +2,117 @@
   "things": [
     {
       "created": 1540401395373,
-      "id": "about-me",
-      "name": "Personal Information",
+      "id": "personal-info.about-me.fullName",
+      "name": "Full Name",
+      "type": "user-account",
+      "value": "Moazzam Khan"
+    },
+    {
+      "created": 1540401395373,
+      "id": "personal-info.about-me.dateOfBirth",
+      "name": "Date Of Birth",
+      "type": "user-account",
+      "value": "26/10/1983"
+    },
+    {
+      "created": 1540401395373,
+      "id": "personal-info.about-me.bloodGroup",
+      "name": "Blood Group",
+      "type": "user-account",
+      "value": "B+"
+    },
+    {
+      "created": 1540401395373,
+      "id": "personal-info.about-me.gender",
+      "name": "Gender",
+      "type": "user-account",
+      "value": "Male"
+    },
+    {
+      "created": 1540401395373,
+      "id": "personal-info.about-me.maritalStatus",
+      "name": "Marital Status",
+      "type": "user-account",
+      "value": "Married"
+    },
+    {
+      "created": 1540401395373,
+      "id": "personal-info.address.0",
+      "name": "Address",
       "type": "user-account",
       "value": {
-        "name": "",
-        "dateOfBirth": "",
-        "bloodGroup": "",
-        "gender": "",
-        "maritalStatus": ""
+        "label": "Home",
+        "houseNumber": "A 101",
+        "building": "MDVR Prime Rose",
+        "street": "Begur-Koppa Road",
+        "city": "Bangalore",
+        "pincode": "560068",
+        "state": "Kartanaka",
+        "country": "India"
       }
     },
     {
       "created": 1540401395373,
-      "id": "addresses",
-      "name": "Addresses",
-      "type": "user-account/personal-info",
-      "value": []
+      "id": "personal-info.address.1",
+      "name": "Address",
+      "type": "user-account",
+      "value": {
+        "label": "Work",
+        "houseNumber": "Ground and 3rd Floor",
+        "building": "RMZ Titanium Building",
+        "street": "135, Old Airport Road, Kodihalli",
+        "city": "Bangalore",
+        "pincode": "560017",
+        "state": "Kartanaka",
+        "country": "India"
+      }
     },
     {
       "created": 1540401395373,
-      "id": "phones",
+      "id": "personal-info.phone.0",
+      "name": "Phone",
+      "type": "user-account",
+      "value": {
+        "label": "Home",
+        "countryCode": "91",
+        "phoneNumber": "9740087250",
+        "mobile": true
+      }
+    },
+    {
+      "created": 1540401395373,
+      "id": "personal-info.phone.1",
       "name": "Phones",
-      "type": "user-account/personal-info",
-      "value": []
+      "type": "user-account",
+      "value": {
+        "label": "Work",
+        "countryCode": "91",
+        "areaCode": "80",
+        "phoneNumber": "41371527",
+        "mobile": false
+      }
     },
     {
       "created": 1540401395373,
-      "id": "emails",
-      "name": "Emails",
-      "type": "user-account/personal-info",
-      "value": []
+      "id": "personal-info.email.0",
+      "name": "Email",
+      "type": "user-account",
+      "value": {
+        "label": "Home",
+        "email": "0moazzam.khan@gmail.com"
+      }
     },
 
+    {
+      "created": 1540401395373,
+      "id": "personal-info.email.1",
+      "name": "Email",
+      "type": "user-account",
+      "value": {
+        "label": "Work",
+        "email": "moazzamkhan@fico.com"
+      }
+    },
     {
       "created": 1540401395373,
       "id": "settings",

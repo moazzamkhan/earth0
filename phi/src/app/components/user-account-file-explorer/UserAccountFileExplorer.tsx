@@ -7,42 +7,28 @@ import { Generator } from "../../utils/generator.utils"
 import { ThingUtils } from "../../utils/thing.utils"
 import { Thing } from "../../../../base"
 import { addThing, deleteThing } from "../things/things.action"
-import "./FileExplorer.less"
-import moment from "moment"
+import "./UserAccountFileExplorer.less"
 
 interface Props {
-  things: Thing[]
-  currentThing: Thing
-  currentType: string
-  onNewItem: any
-  onDeleteItem: any
+  selectedItemId: string
   onItemClick: any
 }
 
-const component = ({ things, currentThing, currentType, onNewItem, onDeleteItem, onItemClick }: Props) => {
+const component = ({ selectedItemId, onItemClick }: Props) => {
+  const items = [{ id: "personal-info", name: "Personal Information" }, { id: "settings", name: "Settings" }]
   return (
     <div id="file-explorer" className="btn-toolbar" role="toolbar" aria-label="">
-      <div className="btn-group btn-group-sm">
-        <button type="button" className="btn btn-outline-secondary" onClick={() => onDeleteItem(currentThing.id)}>
-          <i className="far fa-trash-alt" />
-        </button>
-
-        <button type="button" className="btn btn-outline-secondary" onClick={() => onNewItem(currentType)}>
-          <i className="fas fa-plus-circle" />
-        </button>
-      </div>
-
       <div className="list-group">
-        {things &&
-          things.map((t: Thing) => (
+        {items &&
+          items.map((t: { id: string; name: string }) => (
             <a
               href="javascript:void 0"
               id={t.id}
               key={t.id}
-              onClick={(e: SyntheticEvent) => onItemClick(t)}
-              className={`list-group-item list-group-item-action ${currentThing.id === t.id ? "active" : ""}`}
+              onClick={(e: SyntheticEvent) => onItemClick(t.id)}
+              className={`list-group-item list-group-item-action ${selectedItemId === t.id ? "active" : ""}`}
             >
-              {t.name} <small>{moment(t.created).calendar()}</small>
+              {t.name} <small>{t.name}</small>
             </a>
           ))}
       </div>
@@ -51,23 +37,19 @@ const component = ({ things, currentThing, currentType, onNewItem, onDeleteItem,
 }
 
 const mapStateToProps = (state: AppState) => {
-  const things = state.route.thingType
-    ? state.things.filter((t: Thing) => t.type === state.route.thingType)
-    : state.things
+  console.log(state.route)
   return {
-    things,
-    currentType: state.route.thingType,
     currentThing: state.things.filter((t: Thing) => t.id === state.route.thingId)[0] || state.things[0]
   }
 }
 
 const mapDispatchToProps = (dispatch: any, ownProps: any) => {
   return {
-    onItemClick: (thing: Thing) => {
+    onItemClick: (selectedItemId: string) => {
       dispatch(
         updateRoute({
-          thingType: thing.type,
-          thingId: thing.id
+          thingType: "user-account",
+          thingId: selectedItemId
         } as RouteState)
       )
     },
@@ -80,9 +62,9 @@ const mapDispatchToProps = (dispatch: any, ownProps: any) => {
   }
 }
 
-const FileExplorer = connect(
+const UserAccountFileExplorer = connect(
   mapStateToProps,
   mapDispatchToProps
 )(component)
 
-export default FileExplorer
+export default UserAccountFileExplorer

@@ -1,5 +1,5 @@
-import { Thing } from "../../../../../base";
 import React from "react"
+import { Thing } from "../../../../../base"
 import AboutMeComponent from "../about-me-component/AboutMeComponent"
 import AddressesComponent from "../addresses-component/AddressesComponent"
 import EmailsComponent from "../emails-component/EmailComponent"
@@ -15,6 +15,19 @@ interface State {
   activeTabId: string
 }
 
+interface TabItem {
+  id: string
+  name: string
+  component: any
+}
+
+const items = [
+  { id: "about-me", name: "About Me", component: AboutMeComponent },
+  { id: "address", name: "Addresses", component: AddressesComponent },
+  { id: "phone", name: "Phones", component: PhonesComponent },
+  { id: "email", name: "Emails", component: EmailsComponent }
+]
+
 export default class PersonalInfoComponent extends React.Component<Props, State> {
   constructor(props: Props) {
     super(props)
@@ -26,36 +39,41 @@ export default class PersonalInfoComponent extends React.Component<Props, State>
     this.setState({ activeTabId: tabId })
   }
 
+  getComponent(thingId: string) {
+    thingId = this.extractActualId(thingId)
+    return items.find((it: TabItem) => it.id === thingId).component
+  }
+
+  extractActualId(thingId: string) {
+    const tokens = thingId.split(".")
+    return tokens[1] || tokens[0]
+  }
+
   render() {
     const { personalThings } = this.props
-    const componentMap: any = {
-      "about-me": AboutMeComponent,
-      addresses: AddressesComponent,
-      phones: PhonesComponent,
-      emails: EmailsComponent
-    }
-
-    const Comp = componentMap[this.state.activeTabId]
+    const Comp = this.getComponent(this.state.activeTabId)
     return (
       <div id="personal-info-box">
         <div className="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
-          {personalThings.map((thing: Thing) => (
+          {items.map((it: TabItem) => (
             <a
-              className={`nav-link ${this.state.activeTabId === thing.id ? "active" : ""}`}
-              id={thing.id}
-              key={thing.id}
+              className={`nav-link ${this.state.activeTabId === it.id ? "active" : ""}`}
+              id={it.id}
+              key={it.id}
               data-toggle="pill"
               href="javascript:void(0)"
               role="tab"
-              onClick={() => this.switchTab(thing.id)}
+              onClick={() => this.switchTab(it.id)}
             >
-              {thing.name}
+              {it.name}
             </a>
           ))}
         </div>
         <div className="tab-content">
           <Comp
-            thing={personalThings.find((thing: Thing) => thing.id === this.state.activeTabId)}
+            things={personalThings.filter(
+              (thing: Thing) => thing.id.indexOf(this.extractActualId(this.state.activeTabId)) > -1
+            )}
             onChange={this.props.onChange}
           />
         </div>

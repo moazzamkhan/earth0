@@ -1,10 +1,10 @@
-import { Thing } from "../../../../base";
+import { Thing } from "../../../../base"
 import React from "react"
 
 import { ThingUtils } from "../../utils/thing.utils"
 
 export interface BaseProps {
-  thing: Thing
+  things: Thing[]
   onChange: any
 }
 
@@ -23,8 +23,8 @@ export default class BaseComponent extends React.Component<BaseProps, BaseState>
   }
 
   render() {
-    const { thing, onChange } = this.props
-    const items = thing.value as any[]
+    const { things, onChange } = this.props
+    const items = things.map((thing: Thing) => thing.value)
     const Editor = this.getEditor()
     const Renderer = this.getRenderer()
 
@@ -37,7 +37,7 @@ export default class BaseComponent extends React.Component<BaseProps, BaseState>
             onSave={(item: any) => {
               const index = this.state.editing
               this.onChangeEditStatus(NOT_EDITING, () => {
-                onChange(ThingUtils.updateThingValueArray(thing, item, index))
+                // onChange(ThingUtils.updateThing(things.find((thing: Thing)=> thing.id.indexOf(item.)), item, index))
               })
             }}
           />
@@ -78,8 +78,9 @@ export default class BaseComponent extends React.Component<BaseProps, BaseState>
   getEditor(): any {
     return React.Component
   }
+
   onDelete(index: number) {
-    this.props.onChange(ThingUtils.deleteThingValueArray(this.props.thing, index))
+    // this.props.onChange(ThingUtils.deleteThingValueArray(this.props.thing, index))
   }
 
   onChangeEditStatus(status: number, callback?: () => void) {
