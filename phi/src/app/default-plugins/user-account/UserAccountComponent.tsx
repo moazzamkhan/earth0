@@ -1,9 +1,8 @@
-import clone from "clone"
-import { Thing } from "e0-base"
-import React from "react"
+import React from "react";
+import { Thing } from "../../../../base";
+import PersonalInfoComponent from "./personal-info/PersonalInfoComponent";
+import "./UserAccountComponent.less";
 
-import PersonalInfoComponent from "./personal-info/PersonalInfoComponent"
-import "./UserAccountComponent.less"
 
 interface Props {
   thing: Thing

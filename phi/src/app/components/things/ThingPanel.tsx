@@ -1,7 +1,7 @@
 import React from "react"
 import { connect } from "react-redux"
 import AppState from "../../models/AppState"
-import { Thing } from "e0-base"
+import { Thing } from "../../../../base";
 import "./ThingPanel.less"
 import { ThingUtils } from "../../utils/thing.utils"
 import { updateThing } from "./things.action"

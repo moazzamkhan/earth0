@@ -1,12 +1,11 @@
-import React, { SyntheticEvent } from "react"
+import React, { SyntheticEvent } from "react";
+import { connect } from "react-redux";
+import { updateRoute } from "../../actions/route.actions";
+import AppState from "../../models/AppState";
+import RouteState from "../../models/RouteState";
+import { THING_TYPES } from "../../utils/thing.utils";
+import "./SideToolbar.less";
 
-import "./SideToolbar.less"
-import { connect } from "react-redux"
-import { updateRoute } from "../../actions/route.actions"
-import RouteState from "../../models/RouteState"
-import AppState from "../../models/AppState"
-import { THING_TYPES } from "../../utils/thing.utils"
-import { icon as UserAccountIcon } from "../../default-plugins/user-account"
 
 const component = ({
   itemClicked,
@@ -39,14 +38,6 @@ const component = ({
         ))}
 
       <span className="empty" />
-
-      <button
-        className={`btn ${"user-account" === type ? "selected" : ""}`}
-        onClick={(e: SyntheticEvent<HTMLButtonElement>) => itemClicked("user-account")}
-      >
-        <i className={UserAccountIcon} />
-      </button>
-
       <button className="btn" onClick={(e: SyntheticEvent<HTMLButtonElement>) => console.log(e)}>
         <i className="fas fa-arrow-circle-right" />
       </button>

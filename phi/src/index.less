@@ -7,10 +7,21 @@ body {
   overflow: hidden;
   font-family: Menlo, Consolas, DejaVu Sans Mono, monospace;
   background-color: #21252b;
-  color: #abb2bf;  
+  color: #abb2bf;
 
   #root {
     height: 100%;
     width: 100%;
   }
+}
+
+body {
+  border-width: 2px;
+  border-style: solid;
+  border-radius: 10px;
+  border-image: linear-gradient(#17a2b8, #ffc107, #f8f9fa, #dc3545);
+
+  /* top | right | bottom | left */
+  // https://developer.mozilla.org/en-US/docs/Web/CSS/border-image-slice
+  border-image-slice: 7 12 14 5;
 }

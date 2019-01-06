@@ -1,4 +1,4 @@
-import {Thing} from "e0-base"
+import { Thing } from "../../../../base";
 
 export const enum ThingActions {
   ADD_THING = "ADD_THING",

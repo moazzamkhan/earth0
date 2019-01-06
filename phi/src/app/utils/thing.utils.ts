@@ -1,5 +1,5 @@
 import uniqid from "uniqid"
-import { Thing } from "e0-base"
+import { Thing } from "../../../base"
 import AppState from "../models/AppState"
 
 import * as Notes from "../../../plugins/notes"

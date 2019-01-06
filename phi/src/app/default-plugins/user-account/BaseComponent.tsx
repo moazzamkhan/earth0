@@ -1,4 +1,4 @@
-import { Thing } from "e0-base"
+import { Thing } from "../../../../base";
 import React from "react"
 
 import { ThingUtils } from "../../utils/thing.utils"

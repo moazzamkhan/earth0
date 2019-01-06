@@ -1,6 +1,5 @@
 {
-  "compilerOptions": {
-    "baseUrl": ".",
+  "compilerOptions": {    
     "outDir": "./dist/",
     "noImplicitAny": true,
     "sourceMap": true,
@@ -9,9 +8,6 @@
     "target": "es6",
     "jsx": "react",
     "allowSyntheticDefaultImports": true,
-    "allowJs": true,
-    "paths": {
-      "e0-base": ["base/index"]
-    }
+    "allowJs": true
   }
 }

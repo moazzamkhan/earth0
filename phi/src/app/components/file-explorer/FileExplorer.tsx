@@ -5,7 +5,7 @@ import AppState from "../../models/AppState"
 import RouteState from "../../models/RouteState"
 import { Generator } from "../../utils/generator.utils"
 import { ThingUtils } from "../../utils/thing.utils"
-import { Thing } from "e0-base"
+import { Thing } from "../../../../base";
 import { addThing, deleteThing } from "../things/things.action"
 import "./FileExplorer.less"
 import moment from "moment"

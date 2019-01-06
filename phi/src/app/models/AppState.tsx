@@ -1,4 +1,4 @@
-import {Thing} from "e0-base"
+import { Thing } from "../../../base";
 import AppRoute from "./RouteState";
 
 export default interface AppState {
