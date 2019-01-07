@@ -6,10 +6,12 @@ import "./UserAccountComponent.less"
 interface Props {
   thing: Thing
   things: Thing[]
+  onCreate: any
   onChange: any
+  onDelete: any
 }
 
-const UserAccountComponent = ({ thing, things, onChange }: Props) => {
+const UserAccountComponent = ({ thing, things, onChange, onDelete, onCreate }: Props) => {
   const personalThings: Thing[] = things.filter((t: Thing) => t.id.indexOf("personal-info") > -1)
   return (
     <div id="user-account-box">
@@ -21,6 +23,8 @@ const UserAccountComponent = ({ thing, things, onChange }: Props) => {
             console.log(thing)
             onChange(thing)
           }}
+          onDelete= {onDelete}
+          onCreate= {onCreate}
         />
       )}
     </div>

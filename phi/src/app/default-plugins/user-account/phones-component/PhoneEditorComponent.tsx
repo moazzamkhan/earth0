@@ -1,9 +1,10 @@
 import React from "react"
 import "./PhoneEditorComponent.less"
 import Phone from "./Phone"
+import { Thing } from "../../../../../base";
 
 interface Props {
-  item: Phone
+  thing: Thing
   onSave: any
   onCancel: any
 }
@@ -11,7 +12,7 @@ interface Props {
 export default class PhoneEditorComponent extends React.Component<Props, any> {
   constructor(props: Props) {
     super(props)
-    this.state = Object.assign({}, props.item) || ({} as Phone)
+    this.state = Object.assign({}, props.thing.value) || ({} as Phone)
     this.onChange = this.onChange.bind(this)
   }
 

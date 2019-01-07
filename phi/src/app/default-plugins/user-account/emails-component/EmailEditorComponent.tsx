@@ -1,9 +1,10 @@
 import React from "react";
 import Email from "./Email";
 import "./EmailEditorComponent.less";
+import { Thing } from "../../../../../base";
 
 interface Props {
-  item: Email
+  thing: Thing
   onSave: any
   onCancel: any
 }
@@ -11,7 +12,7 @@ interface Props {
 export default class EmailEditorComponent extends React.Component<Props, any> {
   constructor(props: Props) {
     super(props)
-    this.state = Object.assign({}, props.item) || ({} as Email)
+    this.state = Object.assign({}, props.thing.value) || ({} as Email)
     this.onChange = this.onChange.bind(this)
   }
 

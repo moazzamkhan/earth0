@@ -1,13 +1,13 @@
 import React, { SyntheticEvent } from "react"
 import { connect } from "react-redux"
 import AppState from "../../models/AppState"
-import { Thing } from "../../../../base";
+import { Thing } from "../../../../base"
 import "./TitleBar.less"
 import WindowButtons from "./WindowButtons"
 import { icon as UserAccountIcon } from "../../default-plugins/user-account"
 import moment from "moment"
-import RouteState from "../../models/RouteState";
-import { updateRoute } from "../../actions/route.actions";
+import RouteState from "../../models/RouteState"
+import { updateRoute } from "../../actions/route.actions"
 
 const component = ({ thing, additionalButtonClicked }: { thing: Thing; additionalButtonClicked: any }) => (
   <div id="title-bar">
@@ -18,6 +18,14 @@ const component = ({ thing, additionalButtonClicked }: { thing: Thing; additiona
     <div className="empty-space" />
     <div id="additional-buttons" className="btn-toolbar">
       <div className="btn-group btn-group-sm" role="group" aria-label="">
+        <button
+          type="button"
+          className="btn btn-outline-secondary"
+          onClick={(e: SyntheticEvent<HTMLButtonElement>) => additionalButtonClicked("settings")}
+        >
+          <i className="fas fa-cog" />
+        </button>
+
         <button
           type="button"
           className="btn btn-outline-secondary"

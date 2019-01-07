@@ -7,6 +7,10 @@ export default class PhonesComponent extends BaseComponent {
     return PhoneEditorComponent
   }
 
+  getItemType() {
+    return "phone"
+  }
+
   getRenderer() {
     return PhoneRendererComponent
   }

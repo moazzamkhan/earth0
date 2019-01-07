@@ -1,20 +1,33 @@
-import React from "react"
-import { connect } from "react-redux"
-import AppState from "../../models/AppState"
+import React from "react";
+import { connect } from "react-redux";
 import { Thing } from "../../../../base";
-import "./ThingPanel.less"
-import { ThingUtils } from "../../utils/thing.utils"
-import { updateThing } from "./things.action"
+import AppState from "../../models/AppState";
+import { Generator } from "../../utils/generator.utils";
+import { ThingUtils } from "../../utils/thing.utils";
+import "./ThingPanel.less";
+import { addThing, deleteThing, updateThing } from "./things.action";
 
 interface Props {
   thing: Thing
   things: Thing[]
+  onThingCreated: any
   onThingChanged: any
+  onThingDeleted: any
 }
-const component = ({ thing, things, onThingChanged }: Props) => {
+const component = ({ thing, things, onThingCreated, onThingChanged, onThingDeleted }: Props) => {
   const TypeComponent = ThingUtils.getComponentForType(thing.type)
   return (
-    <div id="thing-panel">{thing && <TypeComponent thing={thing} things={things} onChange={onThingChanged} />}</div>
+    <div id="thing-panel">
+      {thing && (
+        <TypeComponent
+          thing={thing}
+          things={things}
+          onCreate={onThingCreated}
+          onChange={onThingChanged}
+          onDelete={onThingDeleted}
+        />
+      )}
+    </div>
   )
 }
 
@@ -28,6 +41,12 @@ const mapDispatchToProps = (dispatch: any) => {
   return {
     onThingChanged: (thing: Thing) => {
       dispatch(updateThing(thing))
+    },
+    onThingDeleted: (id: string) => {
+      id && dispatch(deleteThing(id))
+    },
+    onThingCreated: (type: string) => {
+      type && dispatch(addThing(ThingUtils.createThingInstance(type, `${type}#${Generator.numlt100()}`, null)))
     }
   }
 }

@@ -1,11 +1,12 @@
-import { Thing } from "../../../../base"
 import React from "react"
-
+import { Thing } from "../../../../base"
 import { ThingUtils } from "../../utils/thing.utils"
 
 export interface BaseProps {
   things: Thing[]
+  onCreate: any
   onChange: any
+  onDelete: any
 }
 
 export interface BaseState {
@@ -24,7 +25,6 @@ export default class BaseComponent extends React.Component<BaseProps, BaseState>
 
   render() {
     const { things, onChange } = this.props
-    const items = things.map((thing: Thing) => thing.value)
     const Editor = this.getEditor()
     const Renderer = this.getRenderer()
 
@@ -32,12 +32,12 @@ export default class BaseComponent extends React.Component<BaseProps, BaseState>
       <div id="items-box">
         {this.state.editing !== NOT_EDITING && (
           <Editor
-            item={items[this.state.editing]}
+            item={things[this.state.editing].value}
             onCancel={() => this.onChangeEditStatus(NOT_EDITING)}
-            onSave={(item: any) => {
+            onSave={(value: any) => {
               const index = this.state.editing
               this.onChangeEditStatus(NOT_EDITING, () => {
-                // onChange(ThingUtils.updateThing(things.find((thing: Thing)=> thing.id.indexOf(item.)), item, index))
+                onChange(ThingUtils.updateThing(things[index], value))
               })
             }}
           />
@@ -47,7 +47,8 @@ export default class BaseComponent extends React.Component<BaseProps, BaseState>
             type="button"
             className="btn btn-outline-secondary"
             onClick={() => {
-              this.onChangeEditStatus(NEW_ITEM)
+              this.props.onCreate()
+              // this.onChangeEditStatus(NEW_ITEM)
             }}
           >
             New {this.getItemLabel()}
@@ -55,12 +56,12 @@ export default class BaseComponent extends React.Component<BaseProps, BaseState>
         )}
         <hr />
         {this.state.editing === NOT_EDITING &&
-          items.map((item: any, i: number) => (
+          things.map((thing: Thing, i: number) => (
             <Renderer
               key={`item-${i}`}
-              item={item}
+              item={thing.value}
               onEdit={() => this.onChangeEditStatus(i)}
-              onDelete={() => this.onDelete(i)}
+              onDelete={() => this.props.onDelete(thing.id)}
             />
           ))}
       </div>
@@ -71,16 +72,15 @@ export default class BaseComponent extends React.Component<BaseProps, BaseState>
     return ""
   }
 
+  getItemType() {
+    return ""
+  }
   getRenderer(): any {
     return React.Component
   }
 
   getEditor(): any {
     return React.Component
-  }
-
-  onDelete(index: number) {
-    // this.props.onChange(ThingUtils.deleteThingValueArray(this.props.thing, index))
   }
 
   onChangeEditStatus(status: number, callback?: () => void) {

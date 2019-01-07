@@ -8,7 +8,9 @@ import "./PersonalInfoComponent.less"
 
 interface Props {
   personalThings: Thing[]
+  onCreate: any
   onChange: any
+  onDelete: any
 }
 
 interface State {
@@ -74,7 +76,9 @@ export default class PersonalInfoComponent extends React.Component<Props, State>
             things={personalThings.filter(
               (thing: Thing) => thing.id.indexOf(this.extractActualId(this.state.activeTabId)) > -1
             )}
+            onCreate={this.props.onCreate}
             onChange={this.props.onChange}
+            onDelete={this.props.onDelete}
           />
         </div>
       </div>

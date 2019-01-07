@@ -1,9 +1,10 @@
 import React, { SyntheticEvent, FormEvent } from "react"
 import Address from "./Address"
 import "./AddressesComponent.less"
+import { Thing } from "../../../../../base";
 
 interface Props {
-  item: Address
+  thing: Thing
   onSave: any
   onCancel: any
 }
@@ -11,7 +12,7 @@ interface Props {
 export default class AddressEditorComponent extends React.Component<Props, any> {
   constructor(props: Props) {
     super(props)
-    this.state = Object.assign({}, props.item) || ({} as Address)
+    this.state = Object.assign({}, props.thing.value) || ({} as Address)
     this.onChange = this.onChange.bind(this)
   }
 

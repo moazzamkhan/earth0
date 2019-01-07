@@ -34,10 +34,13 @@ export class ThingUtils {
   }
 
   static createThingInstance(type: string, name: string, value: any) {
+    console.log(type)
+    return;
     return Object.assign(
       {
         id: uniqid(),
-        created: Date.now()
+        created: Date.now(),
+        subtypes: []
       },
       { name, value },
       THING_TYPES.filter((t: any) => t.type === type)[0]
