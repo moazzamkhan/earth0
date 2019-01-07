@@ -1,13 +1,12 @@
-import React, { SyntheticEvent } from "react"
-import { connect } from "react-redux"
-import AppState from "../../models/AppState"
-import { Thing } from "../../../../base"
-import "./TitleBar.less"
-import WindowButtons from "./WindowButtons"
-import { icon as UserAccountIcon } from "../../default-plugins/user-account"
-import moment from "moment"
-import RouteState from "../../models/RouteState"
-import { updateRoute } from "../../actions/route.actions"
+import moment from "moment";
+import React, { SyntheticEvent } from "react";
+import { connect } from "react-redux";
+import { Thing } from "../../../../base";
+import { updateRoute } from "../../actions/route.actions";
+import { icon as UserAccountIcon } from "../../default-plugins/user-account";
+import AppState from "../../models/AppState";
+import RouteState from "../../models/RouteState";
+import "./TitleBar.less";
 
 const component = ({ thing, additionalButtonClicked }: { thing: Thing; additionalButtonClicked: any }) => (
   <div id="title-bar">
@@ -42,7 +41,7 @@ const component = ({ thing, additionalButtonClicked }: { thing: Thing; additiona
         </button>
       </div>
     </div>
-    {process.env.PHI_CONTEXT !== "browser" && <WindowButtons />}
+    {/* {process.env.PHI_CONTEXT !== "browser" && <WindowButtons />} */}
   </div>
 )
 
