@@ -1,40 +1,40 @@
-import React from "react";
-import { connect } from "react-redux";
-import { Thing } from "../../../../base";
-import AppState from "../../models/AppState";
-import { Generator } from "../../utils/generator.utils";
-import { ThingUtils } from "../../utils/thing.utils";
-import "./ThingPanel.less";
-import { addThing, deleteThing, updateThing } from "./things.action";
+import React from "react"
+import { connect } from "react-redux"
+import { Thing } from "../../../../base"
+import AppState from "../../models/AppState"
+import { Generator } from "../../utils/generator.utils"
+import { ThingUtils } from "../../utils/thing.utils"
+import "./ThingPanel.less"
+import { addThing, deleteThing, updateThing } from "./things.action"
 
 interface Props {
+  thingType: string
   thing: Thing
   things: Thing[]
   onThingCreated: any
   onThingChanged: any
   onThingDeleted: any
 }
-const component = ({ thing, things, onThingCreated, onThingChanged, onThingDeleted }: Props) => {
-  const TypeComponent = ThingUtils.getComponentForType(thing.type)
+const component = ({ thingType, thing, things, onThingCreated, onThingChanged, onThingDeleted }: Props) => {
+  const TypeComponent = ThingUtils.getComponentForType(thingType)
   return (
     <div id="thing-panel">
-      {thing && (
-        <TypeComponent
-          thing={thing}
-          things={things}
-          onCreate={onThingCreated}
-          onChange={onThingChanged}
-          onDelete={onThingDeleted}
-        />
-      )}
+      <TypeComponent
+        thing={thing}
+        things={things}
+        onCreate={onThingCreated}
+        onChange={onThingChanged}
+        onDelete={onThingDeleted}
+      />
     </div>
   )
 }
 
 const mapStateToProps = (state: AppState) => {
   return {
-    thing: state.things.filter((t: Thing) => t.id === state.route.thingId)[0] || state.things[0],
-    things: state.things.filter((t: Thing) => t.type === state.route.thingType || t.type.startsWith("user-account"))
+    thingType: state.route.thingType,
+    thing: state.things.find((t: Thing) => t.id === state.route.thingId),
+    things: state.things.filter((t: Thing) => t.type === state.route.thingType)
   }
 }
 const mapDispatchToProps = (dispatch: any) => {

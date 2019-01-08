@@ -16,16 +16,17 @@ if (process.env.PHI_CONTEXT === "browser") {
 // load plugins
 
 storePromise.then((storeModule: any) => {
+  // window.localStorage.clear()
   const thingStore = new storeModule.ThingStore()
-
   // const defaultData = Object.assign({}, thingStore.getData(), { route: { thingType: "locked", thingId: null } })
-  const defaultData = Object.assign({}, thingStore.getData(), { route: { thingType: "user-account", thingId: null } })
+  const defaultData = Object.assign({}, thingStore.getData(), { route: { thingType: "personalInformation", thingId: null } })
   // const defaultData =  thingStore.getData()
   const store = createStore(appStateReducer, defaultData)
 
   // const store = createStore(appStateReducer, thingStore.getData())
 
   store.subscribe(() => {
+    console.log(`${store.getState().route.thingType}/${store.getState().route.thingId}`)
     thingStore.saveData(store.getState())
   })
 

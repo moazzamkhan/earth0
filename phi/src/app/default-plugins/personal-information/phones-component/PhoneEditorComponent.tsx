@@ -21,7 +21,7 @@ export default class PhoneEditorComponent extends React.Component<Props, any> {
   }
 
   render() {
-    const { onSave, onCancel } = this.props
+    const { thing, onSave, onCancel } = this.props
     const phone = this.state as Phone
     return (
       <div id="phone-editor-box">
@@ -29,7 +29,7 @@ export default class PhoneEditorComponent extends React.Component<Props, any> {
           <button type="button" className="btn btn-outline-secondary" onClick={() => onCancel()}>
             Cancel Editing
           </button>
-          <button type="button" className="btn btn-outline-secondary" onClick={() => onSave(this.state as Phone)}>
+          <button type="button" className="btn btn-outline-secondary" onClick={() => onSave(thing, this.state as Phone)}>
             Save Phone
           </button>
         </div>

@@ -11,9 +11,9 @@ export interface BaseProps {
 
 export interface BaseState {
   // -2, not editing, -1 for new, otherwise index
-  editing: number
+  editing: string
 }
-export const NOT_EDITING = -2
+export const NOT_EDITING: any = null
 export const NEW_ITEM = -1
 
 export default class BaseComponent extends React.Component<BaseProps, BaseState> {
@@ -30,19 +30,18 @@ export default class BaseComponent extends React.Component<BaseProps, BaseState>
 
     return (
       <div id="items-box">
-        {this.state.editing !== NOT_EDITING && (
+        {this.state.editing && (
           <Editor
-            item={things[this.state.editing].value}
+            thing={things.find((t: Thing) => this.state.editing === t.id)}
             onCancel={() => this.onChangeEditStatus(NOT_EDITING)}
-            onSave={(value: any) => {
-              const index = this.state.editing
+            onSave={(thing: Thing, value: any) => {
               this.onChangeEditStatus(NOT_EDITING, () => {
-                onChange(ThingUtils.updateThing(things[index], value))
+                onChange(ThingUtils.updateThing(thing, { value }))
               })
             }}
           />
         )}
-        {this.state.editing === NOT_EDITING && (
+        {!this.state.editing && (
           <button
             type="button"
             className="btn btn-outline-secondary"
@@ -55,12 +54,12 @@ export default class BaseComponent extends React.Component<BaseProps, BaseState>
           </button>
         )}
         <hr />
-        {this.state.editing === NOT_EDITING &&
+        {!this.state.editing &&
           things.map((thing: Thing, i: number) => (
             <Renderer
-              key={`item-${i}`}
-              item={thing.value}
-              onEdit={() => this.onChangeEditStatus(i)}
+              key={thing.id}
+              thing={thing}
+              onEdit={(t: Thing) => this.onChangeEditStatus(t.id)}
               onDelete={() => this.props.onDelete(thing.id)}
             />
           ))}
@@ -83,7 +82,7 @@ export default class BaseComponent extends React.Component<BaseProps, BaseState>
     return React.Component
   }
 
-  onChangeEditStatus(status: number, callback?: () => void) {
-    this.setState({ editing: status }, callback)
+  onChangeEditStatus(thingId: string, callback?: () => void) {
+    this.setState({ editing: thingId }, callback)
   }
 }

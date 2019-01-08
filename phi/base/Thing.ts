@@ -1,12 +1,10 @@
 export class Thing {
   id: string
   type: string
-  subtypes: string[] = []
+  subtypes: string[]
   name: string
-
-  /**
-   * timestamp in milliseconds
-   */
   created: number
-  value: any
+  value: Value
 }
+
+export type Value = any

@@ -25,13 +25,13 @@ const component = ({ thing, additionalButtonClicked }: { thing: Thing; additiona
           <i className="fas fa-cog" />
         </button>
 
-        <button
+        {/* <button
           type="button"
           className="btn btn-outline-secondary"
           onClick={(e: SyntheticEvent<HTMLButtonElement>) => additionalButtonClicked("locked")}
         >
           <i className="fas fa-lock" />
-        </button>
+        </button> */}
         <button
           type="button"
           className="btn btn-outline-secondary"

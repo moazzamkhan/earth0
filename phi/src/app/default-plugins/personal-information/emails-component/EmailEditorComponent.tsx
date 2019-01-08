@@ -1,7 +1,7 @@
-import React from "react";
-import Email from "./Email";
-import "./EmailEditorComponent.less";
-import { Thing } from "../../../../../base";
+import React from "react"
+import Email from "./Email"
+import "./EmailEditorComponent.less"
+import { Thing } from "../../../../../base"
 
 interface Props {
   thing: Thing
@@ -21,7 +21,7 @@ export default class EmailEditorComponent extends React.Component<Props, any> {
   }
 
   render() {
-    const { onSave, onCancel } = this.props
+    const { thing, onSave, onCancel } = this.props
     const email = this.state as Email
     return (
       <div id="email-editor-box">
@@ -29,7 +29,11 @@ export default class EmailEditorComponent extends React.Component<Props, any> {
           <button type="button" className="btn btn-outline-secondary" onClick={() => onCancel()}>
             Cancel Editing
           </button>
-          <button type="button" className="btn btn-outline-secondary" onClick={() => onSave(this.state as Email)}>
+          <button
+            type="button"
+            className="btn btn-outline-secondary"
+            onClick={() => onSave(thing, this.state as Email)}
+          >
             Save Email
           </button>
         </div>

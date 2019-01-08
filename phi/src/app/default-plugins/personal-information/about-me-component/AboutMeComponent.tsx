@@ -1,6 +1,6 @@
 import React from "react"
 import "./AboutMeComponent.less"
-import { AboutMe } from "../personal-info/PersonalInfo"
+import { AboutMe } from "../../personal-information/PersonalInfo"
 import { Thing } from "../../../../../base"
 import { ThingUtils } from "../../../utils/thing.utils"
 
@@ -11,13 +11,10 @@ interface Props {
 
 const AboutMeComponent = ({ things, onChange }: Props) => {
   const aboutMe = things.reduce((m: any, thing: Thing) => {
-    const tokens = thing.id.split(".")
-    const id = tokens[tokens.length - 1]
-    m[id] = thing.value
+    const property = thing.subtypes[1]
+    m[property] = thing.value
     return m
   }, {}) as AboutMe
-
-  console.log(aboutMe)
 
   const items = [
     { label: "Full Name", property: "fullName", placeholder: "Your full name" },
@@ -44,7 +41,7 @@ const AboutMeComponent = ({ things, onChange }: Props) => {
               defaultValue={(aboutMe as any)[item.property]}
               onChange={e =>
                 onChange(
-                  ThingUtils.updateThing(things.find((thing: Thing) => thing.id.indexOf(item.property) > -1), {
+                  ThingUtils.updateThing(things.find((thing: Thing) => thing.subtypes[1] == item.property), {
                     value: e.target.value
                   })
                 )

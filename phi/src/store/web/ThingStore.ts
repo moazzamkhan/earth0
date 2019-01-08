@@ -1,4 +1,5 @@
 import defaultData from "../default-data.json"
+import uniqid from "uniqid"
 
 export class ThingStore {
   getData(): any {
@@ -6,6 +7,10 @@ export class ThingStore {
     if (data) {
       return JSON.parse(data)
     } else {
+      defaultData.things.forEach((item: any) => {
+        item.id = uniqid()
+        item.created = Date.now()
+      })
       this.saveData(defaultData)
       return defaultData
     }

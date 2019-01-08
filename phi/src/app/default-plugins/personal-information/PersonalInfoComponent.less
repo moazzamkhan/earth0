@@ -1,11 +1,24 @@
 #personal-info-box {
+  .form-control {
+    font-size: 1.5rem;
+    background-color: transparent;
+    border: none;
+    border-radius: 0;
+    padding-left: 0;
+    color: white;
+    &:focus {
+      color: white;
+      border-bottom: 1px solid #ced4da;
+    }
+  }
+
   display: flex;
   height: 100%;
 
   .nav.nav-pills {
     padding: 10px 40px 10px 10px;
     height: 100%;
-    background-color: #37474F;
+    background-color: #37474f;
     .nav-link {
       border-radius: 0;
       padding: 5px;

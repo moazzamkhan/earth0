@@ -2,6 +2,7 @@ import fs from "fs"
 import mkdirp from "mkdirp"
 import os from "os"
 import path from "path"
+import uniqid from "uniqid"
 
 import defaultData from "../default-data.json"
 
@@ -20,6 +21,11 @@ export class ThingStore {
     })
 
     if (data) {
+      defaultData.things.forEach((item: any) => {
+        item.id = uniqid()
+        item.created = Date.now()
+      })
+
       return JSON.parse(data)
     } else {
       this.saveData(defaultData)

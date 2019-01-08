@@ -1,7 +1,7 @@
 import React, { SyntheticEvent, FormEvent } from "react"
 import Address from "./Address"
 import "./AddressesComponent.less"
-import { Thing } from "../../../../../base";
+import { Thing } from "../../../../../base"
 
 interface Props {
   thing: Thing
@@ -20,7 +20,7 @@ export default class AddressEditorComponent extends React.Component<Props, any> 
     this.setState({ [e.target.id]: e.target.value })
   }
   render() {
-    const { onSave, onCancel } = this.props
+    const { thing, onSave, onCancel } = this.props
     const address = this.state
     return (
       <div id="address-editor-box">
@@ -28,7 +28,11 @@ export default class AddressEditorComponent extends React.Component<Props, any> 
           <button type="button" className="btn btn-outline-secondary" onClick={() => onCancel()}>
             Cancel Editing
           </button>
-          <button type="button" className="btn btn-outline-secondary" onClick={() => onSave(this.state as Address)}>
+          <button
+            type="button"
+            className="btn btn-outline-secondary"
+            onClick={() => onSave(thing, this.state as Address)}
+          >
             Save Address
           </button>
         </div>

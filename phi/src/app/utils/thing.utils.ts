@@ -5,6 +5,7 @@ import AppState from "../models/AppState"
 import * as Notes from "../../../plugins/notes"
 import * as Thoughts from "../../../plugins/thoughts"
 import * as UserAccount from "../default-plugins/user-account/"
+import * as PersonalInformation from "../default-plugins/personal-information/"
 import clone from "clone"
 export class ThingUtils {
   /**
@@ -34,8 +35,6 @@ export class ThingUtils {
   }
 
   static createThingInstance(type: string, name: string, value: any) {
-    console.log(type)
-    return;
     return Object.assign(
       {
         id: uniqid(),
@@ -52,7 +51,10 @@ export class ThingUtils {
       case "thought":
         return Thoughts.component
 
-      case "user-account":
+      case "personalInformation":
+        return PersonalInformation.component
+        
+      case "userAccount":
         return UserAccount.component
 
       case "note":

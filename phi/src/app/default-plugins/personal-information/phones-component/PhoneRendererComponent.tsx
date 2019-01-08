@@ -1,12 +1,14 @@
 import React from "react"
 import Phone from "./Phone"
+import { Thing } from "../../../../../base"
 
 interface Props {
-  item: Phone
+  thing: Thing
   onEdit: any
   onDelete: any
 }
-const PhoneRendererComponent = ({ item, onEdit, onDelete }: Props) => {
+const PhoneRendererComponent = ({ thing, onEdit, onDelete }: Props) => {
+  const item = thing.value as Phone
   return (
     <div className="card">
       <div className="card-body">
@@ -15,10 +17,10 @@ const PhoneRendererComponent = ({ item, onEdit, onDelete }: Props) => {
           {item.mobile ? <i className="fas fa-mobile-alt" /> : <i className="fas fa-phone" />}
           {` (+${item.countryCode}) ${item.mobile ? "" : item.areaCode + " "}${item.phoneNumber}`}
         </p>
-        <a href="javascript: void(0)" className="card-link" onClick={onEdit}>
+        <a href="javascript: void(0)" className="card-link" onClick={() => onEdit(thing)}>
           Edit
         </a>
-        <a href="javascript: void(0)" className="card-link" onClick={onDelete}>
+        <a href="javascript: void(0)" className="card-link" onClick={() => onDelete(thing)}>
           Delete
         </a>
       </div>

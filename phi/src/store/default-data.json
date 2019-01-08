@@ -1,45 +1,51 @@
 {
   "things": [
     {
-      "created": 1540401395373,
-      "id": "personal-info.about-me.fullName",
+      "created": 0,
+      "id": "",
       "name": "Full Name",
-      "type": "user-account",
+      "type": "personalInformation",
+      "subtypes": ["aboutMe", "fullName"],
       "value": "Moazzam Khan"
     },
     {
-      "created": 1540401395373,
-      "id": "personal-info.about-me.dateOfBirth",
+      "created": 0,
+      "id": "",
       "name": "Date Of Birth",
-      "type": "user-account",
+      "type": "personalInformation",
+      "subtypes": ["aboutMe", "dateOfBirth"],
       "value": "26/10/1983"
     },
     {
-      "created": 1540401395373,
-      "id": "personal-info.about-me.bloodGroup",
+      "created": 0,
+      "id": "personalInformation.about-me.bloodGroup",
       "name": "Blood Group",
-      "type": "user-account",
+      "type": "personalInformation",
+      "subtypes": ["aboutMe", "bloodGroup"],
       "value": "B+"
     },
     {
-      "created": 1540401395373,
-      "id": "personal-info.about-me.gender",
+      "created": 0,
+      "id": "",
       "name": "Gender",
-      "type": "user-account",
+      "type": "personalInformation",
+      "subtypes": ["aboutMe", "gender"],
       "value": "Male"
     },
     {
-      "created": 1540401395373,
-      "id": "personal-info.about-me.maritalStatus",
+      "created": 0,
+      "id": "",
       "name": "Marital Status",
-      "type": "user-account",
+      "type": "personalInformation",
+      "subtypes": ["aboutMe", "maritalStatus"],
       "value": "Married"
     },
     {
-      "created": 1540401395373,
-      "id": "personal-info.address.0",
+      "created": 0,
+      "id": "",
       "name": "Address",
-      "type": "user-account",
+      "type": "personalInformation",
+      "subtypes": ["address"],
       "value": {
         "label": "Home",
         "houseNumber": "A 101",
@@ -52,10 +58,11 @@
       }
     },
     {
-      "created": 1540401395373,
-      "id": "personal-info.address.1",
+      "created": 0,
+      "id": "",
       "name": "Address",
-      "type": "user-account",
+      "type": "personalInformation",
+      "subtypes": ["address"],
       "value": {
         "label": "Work",
         "houseNumber": "Ground and 3rd Floor",
@@ -68,10 +75,11 @@
       }
     },
     {
-      "created": 1540401395373,
-      "id": "personal-info.phone.0",
+      "created": 0,
+      "id": "",
       "name": "Phone",
-      "type": "user-account",
+      "type": "personalInformation",
+      "subtypes": ["phone"],
       "value": {
         "label": "Home",
         "countryCode": "91",
@@ -80,10 +88,11 @@
       }
     },
     {
-      "created": 1540401395373,
-      "id": "personal-info.phone.1",
+      "created": 0,
+      "id": "",
       "name": "Phones",
-      "type": "user-account",
+      "type": "personalInformation",
+      "subtypes": ["phone"],
       "value": {
         "label": "Work",
         "countryCode": "91",
@@ -93,10 +102,11 @@
       }
     },
     {
-      "created": 1540401395373,
-      "id": "personal-info.email.0",
+      "created": 0,
+      "id": "",
       "name": "Email",
-      "type": "user-account",
+      "type": "personalInformation",
+      "subtypes": ["email"],
       "value": {
         "label": "Home",
         "email": "0moazzam.khan@gmail.com"
@@ -104,20 +114,22 @@
     },
 
     {
-      "created": 1540401395373,
-      "id": "personal-info.email.1",
+      "created": 0,
+      "id": "",
       "name": "Email",
-      "type": "user-account",
+      "type": "personalInformation",
+      "subtypes": ["email"],
       "value": {
         "label": "Work",
         "email": "moazzamkhan@fico.com"
       }
     },
     {
-      "created": 1540401395373,
-      "id": "settings",
+      "created": 0,
+      "id": "",
       "name": "Settings",
       "type": "user-account",
+      "subtypes": ["settings"],
       "value": {
         "savedAt": "~/.everything/et.json"
       }

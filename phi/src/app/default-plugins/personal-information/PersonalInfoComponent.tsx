@@ -1,13 +1,13 @@
 import React from "react"
-import { Thing } from "../../../../../base"
-import AboutMeComponent from "../about-me-component/AboutMeComponent"
-import AddressesComponent from "../addresses-component/AddressesComponent"
-import EmailsComponent from "../emails-component/EmailComponent"
-import PhonesComponent from "../phones-component/PhonesComponent"
+import { Thing } from "../../../../base"
 import "./PersonalInfoComponent.less"
+import AboutMeComponent from "./about-me-component/AboutMeComponent"
+import AddressesComponent from "./addresses-component/AddressesComponent"
+import PhonesComponent from "./phones-component/PhonesComponent"
+import EmailsComponent from "./emails-component/EmailComponent"
 
 interface Props {
-  personalThings: Thing[]
+  things: Thing[]
   onCreate: any
   onChange: any
   onDelete: any
@@ -24,7 +24,7 @@ interface TabItem {
 }
 
 const items = [
-  { id: "about-me", name: "About Me", component: AboutMeComponent },
+  { id: "aboutMe", name: "About Me", component: AboutMeComponent },
   { id: "address", name: "Addresses", component: AddressesComponent },
   { id: "phone", name: "Phones", component: PhonesComponent },
   { id: "email", name: "Emails", component: EmailsComponent }
@@ -33,7 +33,7 @@ const items = [
 export default class PersonalInfoComponent extends React.Component<Props, State> {
   constructor(props: Props) {
     super(props)
-    this.state = { activeTabId: props.personalThings[0].id }
+    this.state = { activeTabId: props.things[0].subtypes[0] }
     this.switchTab = this.switchTab.bind(this)
   }
 
@@ -42,17 +42,11 @@ export default class PersonalInfoComponent extends React.Component<Props, State>
   }
 
   getComponent(thingId: string) {
-    thingId = this.extractActualId(thingId)
     return items.find((it: TabItem) => it.id === thingId).component
   }
 
-  extractActualId(thingId: string) {
-    const tokens = thingId.split(".")
-    return tokens[1] || tokens[0]
-  }
-
   render() {
-    const { personalThings } = this.props
+    const { things } = this.props
     const Comp = this.getComponent(this.state.activeTabId)
     return (
       <div id="personal-info-box">
@@ -73,9 +67,7 @@ export default class PersonalInfoComponent extends React.Component<Props, State>
         </div>
         <div className="tab-content">
           <Comp
-            things={personalThings.filter(
-              (thing: Thing) => thing.id.indexOf(this.extractActualId(this.state.activeTabId)) > -1
-            )}
+            things={things.filter((thing: Thing) => thing.subtypes[0] === this.state.activeTabId)}
             onCreate={this.props.onCreate}
             onChange={this.props.onChange}
             onDelete={this.props.onDelete}
