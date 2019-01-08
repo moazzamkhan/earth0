@@ -12,7 +12,7 @@ return will be a userid and password. Requires, username and password
      - `password` creates with a provided password
      - `phone` sets phone number for recovering account. Will keep OTP in redis DB for 30 mins.
      - `verificationCode` - OTP or current password to be sent to change `phone` or `password` along with the new `phone` and `fpassword`
-   -FLOW WOULD BE - 
+   - FLOW WOULD BE - 
     * User will be asked press a button to create a new account
     * In response 
 
@@ -32,5 +32,8 @@ username -
 
 
 -----
+/login - unauth
+/register - unauth
+/home
 
 
